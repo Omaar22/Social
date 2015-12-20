@@ -5,21 +5,20 @@
 #ifndef SOCIAL_MESSAGE_H
 #define SOCIAL_MESSAGE_H
 
-#include <string>
-#include <iostream>
-
-using namespace std;
-
-
+#include "DateTime.h"
 
 class Message {
 private:
     string text, receiver, sender;
-    // DateTime
+    DateTime dateTime;
+    string message;
 public:
-    void view();
 
     Message(string text, string receiver, string sender);
+
+    void view();
+
+    string getMessage();
 
     string getSender();
 
