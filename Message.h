@@ -6,6 +6,7 @@
 #define SOCIAL_MESSAGE_H
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
