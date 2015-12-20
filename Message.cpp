@@ -5,7 +5,7 @@
 #include "Message.h"
 
 void Message::view() {
-    cout << "From " << sender << "\nTo " << receiver << "\n" << text;
+    cout << message;
 }
 
 Message::Message(string text, string receiver, string sender) {
@@ -13,7 +13,9 @@ Message::Message(string text, string receiver, string sender) {
     this->receiver = receiver;
     this->sender = sender;
 
+    message = text + "\nFrom " + sender + "\nTo " + receiver + "\nAt " + dateTime.getDate() + " " + dateTime.getTime();
 }
+
 
 string Message::getSender() {
     return sender;
@@ -25,4 +27,8 @@ string Message::getReceiver() {
 
 string Message::getText() {
     return text;
+}
+
+string Message::getMessage() {
+    return message;
 }
