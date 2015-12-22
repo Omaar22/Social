@@ -49,5 +49,4 @@ void User::setName(string name) {
 }
 
 void User::sendMessage(string text) {
-    cout << "Fuck";
 }
