@@ -18,7 +18,6 @@ private:
     vector<Message> receivedMessages;
     vector<Message> sentMessages;
     vector<Post> posts;
-    void receiveMessage(Message);
 public:
     void editInfo();
     void viewInfo();
@@ -29,6 +28,8 @@ public:
     void viewFriends();
     void viewReceivedMessages();
     void viewSentMessages();
+    void receiveMessage(Message);
+
 
     void addStatus(string);
     void addLocation(string);
