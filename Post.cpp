@@ -1,9 +1,5 @@
-/*
- * Post.cpp
- *
- *  Created on: Dec 21, 2015
- *      Author: maryam
- */
+//Maryam El-Sokkary
+//4:52 pm 23.DEC.2015
 
 #include "Post.h"
 
