@@ -17,7 +17,7 @@ private:
     vector<User> friends;
     vector<Message> receivedMessages;
     vector<Message> sentMessages;
-    vector<Post> posts;
+    Post *posts
 public:
     void editInfo();
     void viewInfo();
