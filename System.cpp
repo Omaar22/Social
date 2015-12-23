@@ -53,10 +53,11 @@ bool System::validInfo(User user) {
     return false;
 }
 
-void System::signIn() {
+void System::signIn(string email, string password) {
 
     while (true) {
-        if (validPassword("", "")) {
+        if (validPassword(email, password)) {
+            loggedInUser = &userList[find(email)];
             break;
         }
     }
