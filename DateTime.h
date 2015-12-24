@@ -1,7 +1,3 @@
-//
-// Created by Omar Mohamed on 20/12/2015.
-//
-
 #ifndef SOCIAL_DATETIME_H
 #define SOCIAL_DATETIME_H
 
@@ -53,6 +49,7 @@ public:
     string getHour();
     void setHour(string);
 
+    friend ostream& operator<< (ostream &out, DateTime &date);
 
 };
 
