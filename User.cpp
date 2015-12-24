@@ -1,5 +1,6 @@
 //
 // Created by Omar Mohamed on 20/12/2015.
+// Updated by Salma Samy
 //
 
 #include "User.h"
