@@ -1,56 +1,62 @@
 //
-// Created by Omar Mohamed on 20/12/2015.
+// Created by Omar Mohamed on 20/12/2015.4
+// Updated By Salma Samy
 //
 
-#ifndef SOCIAL_USER_H
-#define SOCIAL_USER_H
+#ifndef USER_H
+#define USER_H
 
 #include "Message.h"
 #include "Post.h"
+
 using namespace std;
 
 class User {
 private:
     string name, password, gender, email;
     DateTime birthDate;
-    vector<string> interests;
-    vector<User> friends;
-    vector<Message> receivedMessages;
+    string interests[3];
+    int numOfFriends = 0 ;
+    int numOfPosts = 0 ;
+    User *friends;
+    Post **posts;
+    Message receivedMessages;
     vector<Message> sentMessages;
-    Post *posts
-public:
-    void editInfo();
-    void viewInfo();
-    void addFriend();
-    User findFriend();
 
-    void viewPosts();
-    void viewFriends();
+    void editInfo(); // Done
+    void putInPosts( Post *P ) ; // Done
+
+public:
+
+    void viewInfo(); // Done
+
+    void viewFriends(); // Done
+    void addFriend( User U); // Done
+    void removeFriend( User U); //Done
+
+    User findUser( string mail ); //Done
+
+    void addPost(); // Done
+    void viewPosts(); // Done
+    void viewUser( User U); // Done
+
     void viewReceivedMessages();
     void viewSentMessages();
+
     void receiveMessage(Message);
+    void sendMessage(string text , User U);
 
-
-    void addStatus(string);
-    void addLocation(string);
-
-    void sendMessage(string text);
-
+    // Done All
     void setName(string name);
     string getName();
     void setPassword(string password);
     string getPassword();
     void setEmail(string email);
     string getEmail();
+    void setGender(string gender);
+    string getGender();
     void setBirthDate(DateTime birthDate);
     DateTime getBirthDate();
 
-    void setGender(string gender);
-    string getGender();
-
-
-
 };
 
-
-#endif //SOCIAL_USER_H
