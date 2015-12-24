@@ -125,3 +125,8 @@ void DateTime::setMinute(string minute) {
 void DateTime::setHour(string hour) {
     this->hour = hour;
 }
+ostream &operator<<(ostream &out, DateTime &date) {
+    out << date.getDate();
+    return out;
+}
+
