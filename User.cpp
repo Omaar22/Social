@@ -1,6 +1,6 @@
 //
 // Created by Omar Mohamed on 20/12/2015.
-// Updated by Salma Samy
+// Updated by Salma Samy on 24/12/2015.
 //
 
 #include "User.h"
@@ -146,7 +146,7 @@ void User::addFriend( User U )
     }
 
     delete[] friends;
-    tmpFriends[ numOfFriends ] = U ;
+    tmpFriends[ numOfFriends-1 ] = U ;
 
     friends = tmpFriends ;
     U.addFriend(loggedInUser) ;
@@ -157,7 +157,7 @@ void User::removeFriend( User U )
     numOfFriends--;
     tmpFriends = new User[ numOfFriends ] ;
 
-    for(int i=0 ; i<numOfFriends ; i++)
+    for(int i=0 ; i<=numOfFriends ; i++)
     {
         if( friends[i] != U )
         tmpFriends[i] = friends[i];
@@ -225,7 +225,7 @@ void User::viewUser( User U)
             string s ;
             cout << "Enter Massage : ";
             getline ( cin , s );
-            sendMessage(s , U) ;
+            Message msg(s , U , logeedInUser) ;
         }
         else if ( choice == 2 )
         {
@@ -305,7 +305,7 @@ void User::putInPosts( Post *P )
     }
 
     delete[] posts ;
-    tmpPost[ numOfPosts ] = P ;
+    tmpPost[ numOfPosts-1 ] = P ;
     
     for(int i=0 ; i<numOfPosts-1 ; i++)
     {
