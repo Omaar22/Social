@@ -46,10 +46,15 @@ bool System::validEmail(string P)
     int f3 = P.find(' ') ;
     return  f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1;
 }
+
 bool  System:: validAccount()
 {
     return numOfUsers < 100 ;
 }
+
+///////////////////
+
+
 void System:: AddUser(User U)
 {
     User *temp = new User[numOfUsers + 1] ;
@@ -62,7 +67,11 @@ void System:: AddUser(User U)
     for (int i = 0 ; i <numOfUsers ; i++ )
         listOfUsers[i] = temp[i] ;
     delete []temp ;
+    merge_sort(listOfUsers, numOfUsers );
 }
+
+///////////////////
+
 void System::merge_sort(User *a, int n)
 {
     if (n < 2)
@@ -76,10 +85,10 @@ bool System::validInfo(User U) // not completed !
 {
     bool e = validEmail(U.getEmail()) ;
 }
-void System::Sort()
-{
-    merge_sort(listOfUsers, numOfUsers );
-}
+
+/////////////////
+
+
 void System::merge(User *a, int n, int m)
 {
     int i = 0, j = m;
@@ -101,6 +110,10 @@ void System::merge(User *a, int n, int m)
         a[k] = b[k];
     delete[] b;
 }
+
+/////////////////
+
+
 int System::findUser(int lower, int upper, string email)
 {
     if (lower > upper)
@@ -113,13 +126,20 @@ int System::findUser(int lower, int upper, string email)
     else return mid;
 }
 /// test sorting of user :
-//
+/////////////////////
+
+
+
 void System::show()
 {
     for (int i = 0 ; i <numOfUsers ; i++)
         cout << listOfUsers[i].getName() <<endl;
 }
-void System::removeAccount(User user)
+
+/////////////////
+
+
+void System::removeAccount(User user )
 {
     int index = findUser(0, numOfUsers - 1, user.getEmail());
 
@@ -127,7 +147,13 @@ void System::removeAccount(User user)
 
     for (int i = index; i < numOfUsers; i++)
         listOfUsers[i] = listOfUsers[i + 1];
+    user.remove(user) ;
+
 }
+
+///////////////
+
+
 void System::signUp()
 {
     if (!validAccount())
@@ -178,9 +204,7 @@ void System::signUp()
     }
     AddUser(u);
 }
-User System::search(string)
-{
-}
+
 void System::signIn()
 {
     string e , p ;
@@ -201,6 +225,17 @@ void System::signIn()
             cout << "Invalid password .. please Enter again : ";
             cin >> p ;
         }
-
-
+        loggedInUser = listOfUsers[idx] ;
+        cout << loggedInUser.getName()  << endl;
+}
+User System::searchUser(string e)
+{
+    for (int i = 0 ; i < numOfUsers ; i++ )
+    {
+        if (listOfUsers[i].getEmail() == e)
+            return listOfUsers[i];
+    }
+    User U;
+    U.setName("NoUser") ;
+    return U ;
 }
