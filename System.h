@@ -1,45 +1,35 @@
-#ifndef SOCIAL_SYSTEM_H
-#define SOCIAL_SYSTEM_H
-
+#ifndef SYSTEM_H
+#define SYSTEM_H
+#include <iostream>
 #include "User.h"
+using namespace std ;
 
-class System {
-private:
-    User *userList;
-    int userListSize;
-    int userListTotalSize;
-
-    bool validPassword(string email, string password); // to sign in
-    bool validInfo(User); // to sign up
-
-    void merge(User arr[], int L, int R);
-    void mergeSort(User arr[], int L, int R);
-
-    int find(int, int, string); // binary search return index or -1 if not found
-
+class System
+{
 public:
     System();
-    User *loggedInUser; // point to a user in userList
-    void sortUsers(); // merge sort
-
     User search(string); // return new user if not found
+    bool strongPassword(string P);
+    bool validEmail(string P);
+    bool validName(string P);
+    bool validAccount() ;
 
+    void merge(User *a, int n, int m) ;
+    void merge_sort(User *a, int n) ;
+    bool validInfo(User U) ;
+    void  AddUser(User U) ;
+    void Sort() ;
+    void show();
+    void signUp();
+    void removeAccount(User user) ;
+    int findUser(int, int, string); // binary search return index or -1 if not found
+    void signIn() ;
 
-    bool isFriend(User other); // is friend with the logged in user // shoud be in user?
-
-    void viewUSer(User aUser); // nas2sa
-
-    void signUp(); // na2sa
-
-    void signIn(string email, string password);
-
-
-    void removeAccount(User);
-
-    void readFromFile();
-    void writeOnFile();
-
+    ~System();
+protected:
+private:
+    User *listOfUsers ;
+    int numOfUsers = 0 ;
 };
 
-
-#endif //SOCIAL_SYSTEM_H
+#endif // SYSTEM_H
