@@ -1,150 +1,206 @@
 #include "System.h"
+#include "User.h"
 
-void System::sortUsers() {
-    mergeSort(userList, 0, userListSize - 1);
+System::System()
+{
+    //ctor
 }
 
-void System::merge(User *arr, int L, int R) {
-    int M = (L + R) / 2;
-    int N1 = M - L + 1;
-    int N2 = R - M;
-    User *left = new User[N1];
-    User *right = new User[N2];
-    for (int i = 0; i < N1; ++i)
-        left[i] = arr[L + i];
-    for (int i = 0; i < N2; ++i)
-        right[i] = arr[M + 1 + i];
+System::~System()
+{
+    //dtor
+}
+bool System::validName(string s)
+{
+    bool n = s.size() > 0 ;
 
-    int i = 0, j = 0, k = L;
-
-    while (i < N1 && j < N2) {
-        if (left[i].getEmail() <= right[j].getEmail()) {
-            arr[k] = left[i];
-            i++;
-        }
-        else {
-            arr[k] = right[j];
-            j++;
-        }
-        k++;
+    for (int i = 0 ; i < s.size()  ; i++)
+    {
+        if ( (s[i] >= 65 && s[i] <= 90 ) || (s[i] >= 97 && s[i] <= 122) || s[i] == ' ')
+            continue ;
+        else
+            return 0 ;
     }
-    while (i < N1) {
-        arr[k] = left[i];
-        i++;
-        k++;
-    }
-
-    while (j < N2) {
-        arr[k] = right[j];
-        j++;
-        k++;
-    }
+    return 1 && s.size() ;
 }
 
-void System::mergeSort(User *arr, int L, int R) {
-    if (L >= R)
+bool System::strongPassword(string P)
+{
+    int sz = int (P.size()) ;
+    bool U , L , D ;
+    for (int i = 0 ; i < sz ; i++)
+    {
+        if (islower(P[i]))
+            L = true ;
+        else if (isupper(P[i]))
+            U = true ;
+        else if (isdigit(P[i]))
+            D = true ;
+    }
+    return sz >= 8 && L && U && D ;
+}
+bool System::validEmail(string P)
+{
+    int f1 = P.rfind('@') ;
+    int f2 = P.rfind(".com") ;
+    int f3 = P.find(' ') ;
+    return  f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1;
+}
+bool  System:: validAccount()
+{
+    return numOfUsers < 100 ;
+}
+void System:: AddUser(User U)
+{
+    User *temp = new User[numOfUsers + 1] ;
+    for (int i = 0 ; i < numOfUsers ; i++ )
+    {
+        temp[i] = listOfUsers[i] ;
+    }
+    temp[numOfUsers] = U ;
+    listOfUsers = new User[++numOfUsers] ;
+    for (int i = 0 ; i <numOfUsers ; i++ )
+        listOfUsers[i] = temp[i] ;
+    delete []temp ;
+}
+void System::merge_sort(User *a, int n)
+{
+    if (n < 2)
         return;
-    int M = (L + R) / 2;
-    mergeSort(arr, L, M);
-    mergeSort(arr, M + 1, R);
-    merge(arr, L, R);
+    int m = n / 2;
+    merge_sort(a, m);
+    merge_sort(a + m, n - m);
+    merge(a, n, m);
 }
-
-int System::find(int lower, int upper, string email) {
+bool System::validInfo(User U) // not completed !
+{
+    bool e = validEmail(U.getEmail()) ;
+}
+void System::Sort()
+{
+    merge_sort(listOfUsers, numOfUsers );
+}
+void System::merge(User *a, int n, int m)
+{
+    int i = 0, j = m;
+    User *b = new User[n];
+    for (int k = 0; k < n; ++k)
+    {
+        if (i == m)
+            b[k] = a[j++];
+        else if (j == n)
+            b[k] = a[i++];
+        else if (a[i].getName() <= a[j].getName())
+            b[k] = a[i++];
+        else
+        {
+            b[k] = a[j++];
+        }
+    }
+    for (int k = 0; k < n; ++k)
+        a[k] = b[k];
+    delete[] b;
+}
+int System::findUser(int lower, int upper, string email)
+{
     if (lower > upper)
         return -1;
     int mid = (lower + upper) / 2;
-    if (userList[mid].getEmail() > email)
-        return find(lower, mid - 1, email);
-    else if (userList[mid].getEmail() < email)
-        return find(mid + 1, upper, email);
+    if (listOfUsers[mid].getEmail() > email)
+        return findUser(lower, mid - 1, email);
+    else if (listOfUsers[mid].getEmail() < email)
+        return findUser(mid + 1, upper, email);
     else return mid;
 }
-
-
-bool System::validPassword(string email, string password) {
-    int index = find(0, userListSize - 1, email);
-
-    return index != -1 && userList[index].getPassword() == password;
+/// test sorting of user :
+//
+void System::show()
+{
+    for (int i = 0 ; i <numOfUsers ; i++)
+        cout << listOfUsers[i].getName() <<endl;
 }
+void System::removeAccount(User user)
+{
+    int index = findUser(0, numOfUsers - 1, user.getEmail());
 
-User System::search(string email) {
-    int index = find(0, userListSize - 1, email);
+    numOfUsers--;
 
-    if (index != -1)
-        return userList[index];
-
-    cout << "User not found";
-    return User();
+    for (int i = index; i < numOfUsers; i++)
+        listOfUsers[i] = listOfUsers[i + 1];
 }
-
-bool System::isFriend(User other) {
-    for (int i = 0; i < other.friends.size(); i++) {
-        if (other.friends[i] == other)
-            return true;
+void System::signUp()
+{
+    if (!validAccount())
+    {
+        cout << "Sorry ,You cannot sign up\n";
+        return ;
     }
+    User u ;
+    string s = "0" ;
+    while(!validName(s))
+    {
+        cout << "Name : " ;
+        getline(cin , s) ;
+    }
+    u.setName(s);
+    s = "0";
+    while(!validEmail(s))
+    {
+        cout << "Email: " ;
+        getline(cin , s) ;
+    }
+    u.setEmail(s);
+    s = "0";
+    while(!strongPassword(s))
+    {
+        cout << "Password: " ;
+        getline(cin , s) ;
+    }
+    u.setPassword(s);
+    int choice = -1 ;
+    while(choice == -1)
+    {
+        cout << "Gender (1 for male , 2 for female) :" ;
+        cin >> choice ;
 
-    return false;
+        if (choice == 1)
+            u.setGender("male") ;
+        else if (choice == 2)
+            u.setGender("female") ;
+        else
+            choice = -1;
+    }
+    while(8)
+    {
+        cout << "Enter your date of birth in the format 00/00/0000 : " ;
+        cin >> s ; /// not completed .
+        break ;
+    }
+    AddUser(u);
 }
+User System::search(string)
+{
+}
+void System::signIn()
+{
+    string e , p ;
 
-void System::signUp() {
-    User tmp;
-    cout << "Enter Name, Email ";
-    string name, mail;
-    cin >> name >> mail;
-    tmp.setEmail(mail);
-    tmp.setName(name);
-    while (true) {
-        if (validInfo(tmp)) {
-
-            if (userListSize == userListTotalSize) {
-                userListTotalSize *= 2;
-                User *newArr = new User[userListTotalSize];
-                for (int i = 0; i < userListSize; i++)
-                    newArr[i] = userList[i];
-
-                delete[]userList;
-                userList = newArr;
-            }
-
-            userList[userListSize++] = tmp;
-
-            break;
+        cout << "Email :" ;
+        cin >> e ;
+        int idx  = findUser(0 , numOfUsers , e) ;
+        while (idx == -1)
+        {
+            cout << "Email does not exist please Enter it again :\nEmail:" ;
+            cin >> e ;
+            idx  = findUser(0 , numOfUsers , e) ;
         }
-    }
-}
-
-bool System::validInfo(User user) {
-    return true;
-}
-
-void System::signIn(string email, string password) {
-
-    while (true) {
-        if (validPassword(email, password)) {
-//            loggedInUser = &userList[find(email)];
-            break;
+        cout << "Password :";
+        cin >> p;
+        while(listOfUsers[idx].getPassword() != p )
+        {
+            cout << "Invalid password .. please Enter again : ";
+            cin >> p ;
         }
-    }
-
-}
-
-void System::removeAccount(User user) {
-    int index = find(0, userListSize - 1, user.getEmail());
-    
-    userListSize--;
-
-    for (int i = index; i < userListSize; i++)
-        userList[i] = userList[i + 1];
-}
-
-void System::viewUSer(User aUser) {
 
 
-}
-
-System::System() {
-    userListTotalSize = 10;
-    userList = new User[userListTotalSize];
-    userListSize = 0;
 }
