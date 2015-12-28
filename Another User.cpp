@@ -315,7 +315,6 @@ void User::addPost()
         getline( cin , s ) ;
         st->addStatus(s) ;
         putInPosts( st );
-        cout << "checkPoint1" << endl;
 
     }
     else if( choice == 2)
@@ -356,12 +355,9 @@ void User::addPost()
 
 void User::putInPosts( Post *P )
 {
-	cout << "Put in Posts" << endl;
 	cout << numOfPosts << endl;
      posts[numOfPosts++] = P;
-     for (int i = 0 ; i < numOfPosts ; i++ )
-    	 posts[i]->view() ;
-     cout << endl;
+
 
 }
 
