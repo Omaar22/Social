@@ -10,10 +10,11 @@ System::~System()
 {
     //dtor
 }
+
+////////////////////////////
+
 bool System::validName(string s)
 {
-    bool n = s.size() > 0 ;
-
     for (int i = 0 ; i < s.size()  ; i++)
     {
         if ( (s[i] >= 65 && s[i] <= 90 ) || (s[i] >= 97 && s[i] <= 122) || s[i] == ' ')
@@ -21,13 +22,15 @@ bool System::validName(string s)
         else
             return 0 ;
     }
-    return 1 && s.size() ;
+    return s.size() ;
 }
+
+////////////////////////////////////
 
 bool System::strongPassword(string P)
 {
     int sz = int (P.size()) ;
-    bool U , L , D ;
+    bool U  = false , L = false  , D = false  ;
     for (int i = 0 ; i < sz ; i++)
     {
         if (islower(P[i]))
@@ -39,13 +42,23 @@ bool System::strongPassword(string P)
     }
     return sz >= 8 && L && U && D ;
 }
-bool System::validEmail(string P)
+
+///////////////////////////////////////
+
+int System::validEmail(string P)
 {
     int f1 = P.rfind('@') ;
     int f2 = P.rfind(".com") ;
     int f3 = P.find(' ') ;
-    return  f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1;
+
+    int x = findUser(0,numOfUsers,P);
+    bool b = f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1 ;
+    if (x == -1 && b) return 1;
+    if (x != -1) return 2;
+    return 3  ;
 }
+
+//////////////////////////
 
 bool  System:: validAccount()
 {
@@ -81,6 +94,9 @@ void System::merge_sort(User *a, int n)
     merge_sort(a + m, n - m);
     merge(a, n, m);
 }
+
+/////////////////////////////
+
 bool System::validInfo(User U) // not completed !
 {
     bool e = validEmail(U.getEmail()) ;
@@ -113,9 +129,10 @@ void System::merge(User *a, int n, int m)
 
 /////////////////
 
-
-int System::findUser(int lower, int upper, string email)
+int System::findUser(int lower , int upper , string email)
 {
+    if (numOfUsers == 0)
+        return -1;
     if (lower > upper)
         return -1;
     int mid = (lower + upper) / 2;
@@ -161,73 +178,84 @@ void System::signUp()
         cout << "Sorry ,You cannot sign up\n";
         return ;
     }
+    cout << "\t\t\t Welcome ..\nSign Up :\n\n";
     User u ;
-    string s = "0" ;
-    while(!validName(s))
+    string s;
+    while(1)
     {
-        cout << "Name : " ;
-        getline(cin , s) ;
-    }
-    u.setName(s);
-    s = "0";
-    while(!validEmail(s))
-    {
-        cout << "Email: " ;
-        getline(cin , s) ;
-    }
-    u.setEmail(s);
-    s = "0";
-    while(!strongPassword(s))
-    {
-        cout << "Password: " ;
-        getline(cin , s) ;
-    }
-    u.setPassword(s);
-    int choice = -1 ;
-    while(choice == -1)
-    {
-        cout << "Gender (1 for male , 2 for female) :" ;
-        cin >> choice ;
+        cout << "Fill these Information\n" << endl;
+        try
+        {
 
-        if (choice == 1)
-            u.setGender("male") ;
-        else if (choice == 2)
-            u.setGender("female") ;
-        else
-            choice = -1;
+            int choice ;
+            cout << "Name : ";
+
+            s = "";
+            while(s == "")
+                getline(cin , s);
+            u.setName(s) ;
+            cout << "Password : ";
+            cin >> s;
+            u.setPassword(s) ;
+            cout << "Gender (1 for Male , 2 for Female ) : ";
+            cin >> choice;
+
+            u.setGender(choice) ;
+            cout << "Email : " ;
+            cin >> s ;
+            u.setEmail(s);
+            string month , day , year ;
+            cout << "Enter day month year\n";
+            cin >> day >> month >> year ;
+            if (day.size() == 1)
+                day = '0' + day ;
+            if (month.size() == 1)
+                month = '0' + month ;
+            string s = day + '/' + month + '/' + year ;cout << s <<endl;
+            u.setBirthDate(s);
+
+            cout << endl;
+            break;
+
+        }
+        catch(const char *s)
+        {
+            cout << s << endl;
+            continue ;
+        }
     }
-    while(8)
-    {
-        cout << "Enter your date of birth in the format 00/00/0000 : " ;
-        cin >> s ; /// not completed .
-        break ;
-    }
+
     AddUser(u);
 }
+
+/////////////////////////
 
 void System::signIn()
 {
     string e , p ;
 
-        cout << "Email :" ;
+    cout << "Email :" ;
+    cin >> e ;
+    int idx  = findUser(0 , numOfUsers , e) ;
+    while (idx == -1)
+    {
+        cout << "Email does not exist please Enter it again :\nEmail:" ;
         cin >> e ;
-        int idx  = findUser(0 , numOfUsers , e) ;
-        while (idx == -1)
-        {
-            cout << "Email does not exist please Enter it again :\nEmail:" ;
-            cin >> e ;
-            idx  = findUser(0 , numOfUsers , e) ;
-        }
-        cout << "Password :";
-        cin >> p;
-        while(listOfUsers[idx].getPassword() != p )
-        {
-            cout << "Invalid password .. please Enter again : ";
-            cin >> p ;
-        }
-        loggedInUser = listOfUsers[idx] ;
-        cout << loggedInUser.getName()  << endl;
+        idx  = findUser(0 , numOfUsers , e) ;
+    }
+    cout << "Password :";
+    cin >> p;
+    while(listOfUsers[idx].getPassword() != p )
+    {
+        cout << "Invalid password .. please Enter again : ";
+        cin >> p ;
+    }
+    loggedInUser = listOfUsers[idx] ;
+    cout << loggedInUser.getName()  << endl;
 }
+
+/////////////////////////
+
 User System::searchUser(string e)
 {
     for (int i = 0 ; i < numOfUsers ; i++ )
@@ -239,3 +267,17 @@ User System::searchUser(string e)
     U.setName("NoUser") ;
     return U ;
 }
+
+///////////////////////////////////
+
+bool System::validDate(string s)
+{
+    int sz = s.size() ;
+    int day = (int(s[0] - '0') * 10 + int(s[1] - '0')) ;
+    int month = (int(s[3] - '0') * 10 + int(s[4] - '0')) ;
+    int year = (int(s[6] - '0') * 1000 + int(s[7] - '0') * 100 + int(s[8] - '0') * 10 + int(s[9] - '0')) ;
+    return  isdigit(s[0]) && isdigit(s[1]) && isdigit(s[3]) && isdigit(s[4])
+           && isdigit(s[6]) && isdigit(s[7]) && isdigit(s[8]) && isdigit(s[9]) && s[2] == '/' && s[5] == '/'
+           &&  day <= 31 && day >= 1 &&  month <= 12 && month >= 1 && year >= 1900 && year <= 2014  ;
+}
+void tolow
