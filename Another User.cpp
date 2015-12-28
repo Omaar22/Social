@@ -319,12 +319,12 @@ void User::addPost()
     }
     else if( choice == 2)
     {
-        Poll *pol ;
+        Poll *pol = new Poll;
         int num ;
         cout << "Enter Question : ";
         cin.ignore();
         getline( cin , s ) ;
-        cin.ignore();
+
         cout << "Enter Number Of answers : ";
         cin >> num ;
 
@@ -335,6 +335,7 @@ void User::addPost()
 
         for( int i=0 ; i<num ; i++)
         {
+        	cin.ignore();
             getline ( cin , ans ) ;
             pol->addAnswers(ans) ;
         }
@@ -343,8 +344,9 @@ void User::addPost()
     }
     else
     {
-        Photo *pv;
+        Photo *pv = new Photo;
         cout << "Enter Link : ";
+        cin.ignore();
         getline( cin , s ) ;
 
         pv->addPhoto( s ) ;
@@ -355,7 +357,7 @@ void User::addPost()
 
 void User::putInPosts( Post *P )
 {
-	cout << numOfPosts << endl;
+
      posts[numOfPosts++] = P;
 
 
