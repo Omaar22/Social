@@ -1,5 +1,5 @@
 #include "User.h"
-#include "System.h"
+#include "systems.h"
 #include "Poll.h"
 #include "Photo.h"
 #include "Status.h"
@@ -11,7 +11,7 @@ using namespace std;
 User::User() : posts( new Post*[100] ) , numOfPosts(0){}
 User::~User(){}
 
-System sm;
+systems sm;
 
 void User::editInfo()
 {
@@ -309,17 +309,18 @@ void User::addPost()
 
     if( choice == 1 )
     {
-        Status st;
+        Status *st = new Status;
         cout << "Enter Status : ";
-//        cin.ignore();
-//        getline( cin , s ) ;
-        cin >> s;
-        st.addStatus(s) ;
-        putInPosts( &st );
+        cin.ignore();
+        getline( cin , s ) ;
+        st->addStatus(s) ;
+        putInPosts( st );
+        cout << "checkPoint1" << endl;
+
     }
     else if( choice == 2)
     {
-        Poll pol ;
+        Poll *pol ;
         int num ;
         cout << "Enter Question : ";
         cin.ignore();
@@ -331,41 +332,44 @@ void User::addPost()
         string ans;
         cout << "Enter The Answers : ";
 
-        pol.addQuestion( s ) ;
+        pol->addQuestion( s ) ;
 
         for( int i=0 ; i<num ; i++)
         {
             getline ( cin , ans ) ;
-            pol.addAnswers(ans) ;
+            pol->addAnswers(ans) ;
         }
 
-        putInPosts( &pol );
+        putInPosts( pol );
     }
     else
     {
-        Photo pv;
+        Photo *pv;
         cout << "Enter Link : ";
         getline( cin , s ) ;
 
-        pv.addPhoto( s ) ;
+        pv->addPhoto( s ) ;
 
-        putInPosts( &pv );
+        putInPosts( pv );
     }
 }
 
 void User::putInPosts( Post *P )
 {
+	cout << "Put in Posts" << endl;
+	cout << numOfPosts << endl;
      posts[numOfPosts++] = P;
      for (int i = 0 ; i < numOfPosts ; i++ )
-     posts[i]->view() ;
+    	 posts[i]->view() ;
+     cout << endl;
 
 }
 
 void User::viewPosts()
 {
     for(int i=0 ; i<numOfPosts ; i++)
-    {//
-       // posts[i]->view();
+    {
+        posts[i]->view();
     }
 }
 
@@ -382,7 +386,7 @@ void User::sendMessage()
 //    cin >> mail ;
 //
 //    User U ;
-//    System sm ;
+//    systems sm ;
 //    U = sm.findUser( mail ) ;
 //    if( U.getName() == "NoUser" ) cout << "Sorry, No Such User Exist ! ";
 //    else
