@@ -10,9 +10,10 @@ public:
     System();
     User searchUser(string); // return new user if not found
     bool strongPassword(string P);
-    bool validEmail(string P);
+    int validEmail(string P);
     bool validName(string P);
     bool validAccount() ;
+    bool validDate(string s) ;
     int getNum();
 
     void merge(User *a, int n, int m) ;
