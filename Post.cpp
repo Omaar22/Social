@@ -1,6 +1,3 @@
-//Maryam El-Sokkary
-//4:52 pm 23.DEC.2015
-
 #include "Post.h"
 
 Post::Post() {
@@ -13,7 +10,7 @@ Post::Post() {
 
 }
 
-void Post:: addthis (int size, string *&p){
+void Post:: addthisString (int size, string *&p){
 
 	string *tmp = new string [size+1];
 
@@ -26,7 +23,7 @@ void Post:: addthis (int size, string *&p){
 
 }
 
-void Post:: removethis (int size, int idx, string *&p){
+void Post:: removethisString (int size, int idx, string *&p){
 
 	string *tmp = new string [size-1];
 
@@ -56,7 +53,7 @@ void Post::like(string curUser){
 
 	if (!exist){
 
-		addthis (likeCounter, *&likers);
+		addthisString (likeCounter, *&likers);
 
 		likers [likeCounter] = curUser;
 
@@ -73,7 +70,7 @@ void Post::like(string curUser){
 		}
 
 	if (exist){
-		removethis (dislikeCounter, idx,*&dislikers );
+		removethisString (dislikeCounter, idx,*&dislikers );
 		--dislikeCounter;
 	}
 
@@ -92,7 +89,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (!exist){
-		addthis (dislikeCounter, *&dislikers);
+		addthisString (dislikeCounter, *&dislikers);
 		dislikers[dislikeCounter] = curUser;
 		++dislikeCounter;
 	}
@@ -107,7 +104,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (exist){
-		removethis (likeCounter, idx, *&likers);
+		removethisString (likeCounter, idx, *&likers);
 		--likeCounter;
 	}
 
@@ -117,7 +114,7 @@ void Post::addcomment(string Comment){
 
 	Comment += '\n';
 	Comment += dateandtime.getDate();
-	addthis (numberOfComments, *&comments);
+	addthisString (numberOfComments, *&comments);
 	comments [numberOfComments] = Comment;
 	++numberOfComments;
 
@@ -125,7 +122,7 @@ void Post::addcomment(string Comment){
 
 void Post::deleteComment (int idx){
 	cout << numberOfComments << ' ' << idx <<  endl;
-	removethis (numberOfComments, idx, *&comments);
+	removethisString (numberOfComments, idx, *&comments);
 	--numberOfComments;
 
 }
@@ -138,7 +135,7 @@ void Post::viewComments(){
 }
 
 void Post::viewPostdetails(){
-	cout << likeCounter << ' ' << dislikeCounter << ' ' << numberOfComments << endl;
+	cout << likeCounter << " Likes "<< ' ' << dislikeCounter << " Dislikes " << ' ' << numberOfComments <<" Comments "<< endl;
 }
 
 Post::~Post() {
