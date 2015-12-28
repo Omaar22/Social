@@ -55,8 +55,8 @@ void User::editInfo()
             cout << "Wrong Chois, TRY AGAIN : ";
             cin >> chois ;
         }
-        if( chois == 1 ) setGender( "Male" ) ;
-        else setGender( "Female" ) ;
+        if( chois == 1 ) setGender( 1) ;
+        else setGender( 2) ;
 
     }
     else if( chois == 4 )
@@ -365,14 +365,14 @@ void User::addPost()
 //
 //    delete[] tmpPost ;
 //}
-
-void viewPosts()
-{
+//
+//void viewPosts()
+//{
 //    for(int i=0 ; i<numOfPosts ; i++)
 //    {
 //        cout << posts[i].view() << endl;
 //    }
-}
+//}
 
 //////////////////////
 
@@ -408,35 +408,56 @@ string User::getBirthDate()
 {
     return birthDate;
 }
-void User::setBirthDate( string date )
+void User::setBirthDate( string d )
 {
-    birthDate = date;
+    if (!sm.validDate(d))
+        throw "Invalid date";
+    birthDate = d;
 }
 
 string User::getGender()
 {
     return gender;
 }
-void User::setGender(string gender)
+void User::setGender(int g)
 {
-    this->gender = gender;
+    if (g != 1 && g != 2)
+        throw "Wrong choice";
+    else if (g == 1)
+        gender = "Male";
+    else
+        gender ="Female";
 }
 
 string User::getEmail()
 {
     return email;
 }
-void User::setEmail(string email)
+void User::setEmail(string e)
 {
-    this->email = email;
+    int x = sm.validEmail(e) ;
+    if ( x == 2)
+        throw "Email already Exists";
+    else if (x == 3)
+        throw "Invalid Email";
+    this->email = e;
 }
+
+///////////////////////////////////
 
 string User::getPassword()
 {
     return password;
 }
+
+/////////////////////////////////////
+
 void User::setPassword(string password)
 {
+    if (!sm.strongPassword(password))
+    {
+        throw "Password is too weak";
+    }
     this->password = password;
 }
 
@@ -444,8 +465,12 @@ string User::getName()
 {
     return name;
 }
-void User::setName(string name)
+void User::setName(string n)
 {
+    if (!sm.validName(n))
+    {
+        throw "Invalid name";
+    }
     this->name = name;
 }
 
