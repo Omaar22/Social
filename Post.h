@@ -1,7 +1,5 @@
-//Maryam El-sokkary
-//4:52 pm 23.DEC.2015
-
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstring>
 #include "DateTime.h"
 #include "User.h"
 using namespace std;
@@ -11,6 +9,7 @@ using namespace std;
 #define POST_H_
 
 class Post {
+
 protected:
 int likeCounter;
 int dislikeCounter;
@@ -25,14 +24,14 @@ public:
 	Post();
 	void like (string);
 	void dislike (string);
-	void edit ();
 	void viewComments ();
 	void viewPostdetails();
-	void remove ();
 	void addcomment (string);
 	void deleteComment(int);
-	void addthis (int, string*&);
-	void removethis (int,int, string*&);
+	void addthisString (int, string*&);
+	void removethisString (int,int, string*&);
+	void edit (); //not sure yet!
+	virtual void view () = 0;
 	virtual ~Post();
 };
 
