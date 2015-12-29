@@ -1,17 +1,8 @@
 #include "System.h"
 #include "User.h"
 
-System::System()
-{
-    //ctor
-}
-
-System::~System()
-{
-    //dtor
-}
-
-////////////////////////////
+System::System() : numOfUsers(0) , listOfUsers( new User[100] ){}
+System::~System() {}
 
 bool System::validName(string s)
 {
@@ -25,12 +16,12 @@ bool System::validName(string s)
     return s.size() ;
 }
 
-////////////////////////////////////
+////////////////////////
 
 bool System::strongPassword(string P)
 {
     int sz = int (P.size()) ;
-    bool U  = false , L = false  , D = false  ;
+    bool U , L , D ;
     for (int i = 0 ; i < sz ; i++)
     {
         if (islower(P[i]))
@@ -43,22 +34,17 @@ bool System::strongPassword(string P)
     return sz >= 8 && L && U && D ;
 }
 
-///////////////////////////////////////
+////////////////////////
 
-int System::validEmail(string P)
+bool System::validEmail(string P)
 {
     int f1 = P.rfind('@') ;
     int f2 = P.rfind(".com") ;
     int f3 = P.find(' ') ;
-
-    int x = findUser(0,numOfUsers,P);
-    bool b = f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1 ;
-    if (x == -1 && b) return 1;
-    if (x != -1) return 2;
-    return 3  ;
+    return  f1 != -1 && f2 != -1 && (f2 - f1) > 1  && f3 == -1;
 }
 
-//////////////////////////
+/////////////////////
 
 bool  System:: validAccount()
 {
@@ -67,20 +53,13 @@ bool  System:: validAccount()
 
 ///////////////////
 
-
 void System:: AddUser(User U)
 {
-    User *temp = new User[numOfUsers + 1] ;
-    for (int i = 0 ; i < numOfUsers ; i++ )
-    {
-        temp[i] = listOfUsers[i] ;
+    if( numOfUsers > 100 ) cout << "Sorry, You can't sign up with us :( ";
+    else {
+        listOfUsers[ numOfUsers++ ] = U ;
+        merge_sort(listOfUsers, numOfUsers );
     }
-    temp[numOfUsers] = U ;
-    listOfUsers = new User[++numOfUsers] ;
-    for (int i = 0 ; i <numOfUsers ; i++ )
-        listOfUsers[i] = temp[i] ;
-    delete []temp ;
-    merge_sort(listOfUsers, numOfUsers );
 }
 
 ///////////////////
@@ -95,7 +74,7 @@ void System::merge_sort(User *a, int n)
     merge(a, n, m);
 }
 
-/////////////////////////////
+////////////////////
 
 bool System::validInfo(User U) // not completed !
 {
@@ -103,7 +82,6 @@ bool System::validInfo(User U) // not completed !
 }
 
 /////////////////
-
 
 void System::merge(User *a, int n, int m)
 {
@@ -129,10 +107,8 @@ void System::merge(User *a, int n, int m)
 
 /////////////////
 
-int System::findUser(int lower , int upper , string email)
+int System::findUser(int lower, int upper, string email)
 {
-    if (numOfUsers == 0)
-        return -1;
     if (lower > upper)
         return -1;
     int mid = (lower + upper) / 2;
@@ -142,19 +118,16 @@ int System::findUser(int lower , int upper , string email)
         return findUser(mid + 1, upper, email);
     else return mid;
 }
-/// test sorting of user :
+
 /////////////////////
 
-
-
-void System::show()
+void System::show() ///testing
 {
     for (int i = 0 ; i <numOfUsers ; i++)
         cout << listOfUsers[i].getName() <<endl;
 }
 
 /////////////////
-
 
 void System::removeAccount(User user )
 {
@@ -164,12 +137,10 @@ void System::removeAccount(User user )
 
     for (int i = index; i < numOfUsers; i++)
         listOfUsers[i] = listOfUsers[i + 1];
-    user.remove(user) ;
 
 }
 
 ///////////////
-
 
 void System::signUp()
 {
@@ -186,7 +157,6 @@ void System::signUp()
         cout << "Fill these Information\n" << endl;
         try
         {
-
             int choice ;
             cout << "Name : ";
 
@@ -226,15 +196,13 @@ void System::signUp()
     }
 
     AddUser(u);
+    merge_sort(listOfUsers , numOfUsers) ;
 }
-
-/////////////////////////
-
 void System::signIn()
 {
     string e , p ;
 
-    cout << "Email :" ;
+    cout << "Email: " ;
     cin >> e ;
     int idx  = findUser(0 , numOfUsers , e) ;
     while (idx == -1)
@@ -251,10 +219,10 @@ void System::signIn()
         cin >> p ;
     }
     loggedInUser = listOfUsers[idx] ;
-    cout << loggedInUser.getName()  << endl;
 }
 
-/////////////////////////
+/////////////////////
+
 
 User System::searchUser(string e)
 {
@@ -268,7 +236,7 @@ User System::searchUser(string e)
     return U ;
 }
 
-///////////////////////////////////
+///////////////////////
 
 bool System::validDate(string s)
 {
@@ -280,4 +248,3 @@ bool System::validDate(string s)
            && isdigit(s[6]) && isdigit(s[7]) && isdigit(s[8]) && isdigit(s[9]) && s[2] == '/' && s[5] == '/'
            &&  day <= 31 && day >= 1 &&  month <= 12 && month >= 1 && year >= 1900 && year <= 2014  ;
 }
-void tolow
