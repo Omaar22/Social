@@ -1,5 +1,5 @@
 #include "User.h"
-#include "systems.h"
+#include "System.h"
 #include "Poll.h"
 #include "Photo.h"
 #include "Status.h"
@@ -11,7 +11,7 @@ using namespace std;
 User::User() : posts( new Post*[100] ) , numOfPosts(0){}
 User::~User(){}
 
-systems sm;
+System sm;
 
 void User::editInfo()
 {
@@ -384,7 +384,7 @@ void User::sendMessage()
 //    cin >> mail ;
 //
 //    User U ;
-//    systems sm ;
+//    System sm ;
 //    U = sm.findUser( mail ) ;
 //    if( U.getName() == "NoUser" ) cout << "Sorry, No Such User Exist ! ";
 //    else
