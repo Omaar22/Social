@@ -1,5 +1,5 @@
-#ifndef SYSTEM_H
-#define SYSTEM_H
+#ifndef System_H
+#define System_H
 #include <iostream>
 #include "User.h"
 using namespace std ;
@@ -10,7 +10,7 @@ public:
     System();
     User searchUser(string); // return new user if not found
     bool strongPassword(string P);
-    int validEmail(string P);
+    bool validEmail(string P);
     bool validName(string P);
     bool validAccount() ;
     bool validDate(string s) ;
@@ -34,4 +34,4 @@ private:
     int numOfUsers = 0 ;
 };
 
-#endif // SYSTEM_H
+#endif // System_H
