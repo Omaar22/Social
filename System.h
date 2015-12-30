@@ -1,37 +1,35 @@
 #ifndef System_H
 #define System_H
-#include <iostream>
-#include "User.h"
-using namespace std ;
 
-class System
-{
-public:
-    System();
-    User searchUser(string); // return new user if not found
+#include "User.h"
+
+class System {
+private:
+    User *listOfUsers;
+    int numOfUsers = 0;
+
+    int findUser(int lower, int upper, string email); // binary search return index or -1 if not found
+
     bool strongPassword(string P);
     bool validEmail(string P);
     bool validName(string P);
-    bool validAccount() ;
-    bool validDate(string s) ;
-    int getNum();
+    bool validDate(string s);
+    void AddUser(User U);
 
-    void merge(User *a, int n, int m) ;
-    void merge_sort(User *a, int n) ;
-    bool validInfo(User U) ;
-    void  AddUser(User U) ;
-    void show();
+    void merge(User *a, int n, int m);
+    void merge_sort(User *a, int n);
+public:
+    User *loggedInUser;
+
+    System(); // get data from file
+
     void signUp();
-    void removeAccount(User user) ;
-    int findUser(int, int, string); // binary search return index or -1 if not found
-    void signIn() ;
-    User loggedInUser ;
+    void signIn();
+    User searchUser(string); // throw an exception if not found
+    void removeAccount(User user); // na2sa
+    void viewAllUsers(); // print names only
 
-    ~System();
-protected:
-private:
-    User *listOfUsers ;
-    int numOfUsers = 0 ;
+    ~System();  // call write on file function
 };
 
 #endif // System_H
