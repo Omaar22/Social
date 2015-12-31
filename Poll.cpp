@@ -1,7 +1,8 @@
-//Maryam El-Sokkary
-//12:52 am 24.DEC.2015
+//updated 31 DEC 2015
+//Maryam El-sokkary
 
 #include "Poll.h"
+#include "Template.h"
 
 Poll::Poll() {
 
@@ -19,42 +20,12 @@ void Poll::addQuestion(string Question){
 	time += dateandtime.getTime();
 }
 
-void Poll:: addthisInt (int size, int *&p){
 
-	int *tmp = new int [size+1];
-
-	for (int i = 0; i < size; i++)
-		tmp [i] = p[i];
-
-	delete [] p;
-
-	p = tmp;
-
-}
-
-void Poll:: removethisInt (int size, int idx, int *&p){
-
-	int *tmp = new int [size-1];
-
-	int j = 0;
-	for (int i = 0; i < size; i++)
-		if (i != idx){
-			tmp [j] = p[i];
-			++j;
-		}
-
-
-	delete [] p;
-
-	p = tmp;
-
-
-}
 
 void Poll::addAnswers(string Answer){
 
-	addthisString(numberOfAnswers, *&answers);
-	addthisInt (numberOfAnswers, *&votes);
+	add(numberOfAnswers, *&answers);
+	add (numberOfAnswers, *&votes);
 	votes[numberOfAnswers] = 0;
 	answers[numberOfAnswers] = Answer;
 	++numberOfAnswers;
@@ -73,9 +44,9 @@ void Poll::downVote(string curUser, int idx){
 }
 
 void Poll::removeAnswers(int idx){
-	removethisString (numberOfAnswers, idx, *&answers);
+	remove (numberOfAnswers, idx, *&answers);
 
-	removethisInt (numberOfAnswers, idx, *&votes);
+	remove(numberOfAnswers, idx, *&votes);
 	--numberOfAnswers;
 
 }
