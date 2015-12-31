@@ -1,4 +1,8 @@
+//updated 31 DEC 2015
+//Maryam El-Sokkary
+
 #include "Post.h"
+#include "Template.h"
 
 Post::Post() {
 	likeCounter = 0;
@@ -7,37 +11,6 @@ Post::Post() {
 	comments = NULL;
 	likers = NULL;
 	dislikers = NULL;
-
-}
-
-void Post:: addthisString (int size, string *&p){
-
-	string *tmp = new string [size+1];
-
-	for (int i = 0; i < size; i++)
-		tmp [i] = p[i];
-
-	delete [] p;
-
-	p = tmp;
-
-}
-
-void Post:: removethisString (int size, int idx, string *&p){
-
-	string *tmp = new string [size-1];
-
-	int j = 0;
-	for (int i = 0; i < size; i++)
-		if (i != idx){
-			tmp [j] = p[i];
-			++j;
-		}
-
-
-	delete [] p;
-
-	p = tmp;
 
 }
 
@@ -53,7 +26,7 @@ void Post::like(string curUser){
 
 	if (!exist){
 
-		addthisString (likeCounter, *&likers);
+		add (likeCounter, *&likers);
 
 		likers [likeCounter] = curUser;
 
@@ -70,7 +43,7 @@ void Post::like(string curUser){
 		}
 
 	if (exist){
-		removethisString (dislikeCounter, idx,*&dislikers );
+		remove (dislikeCounter, idx,*&dislikers );
 		--dislikeCounter;
 	}
 
@@ -89,7 +62,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (!exist){
-		addthisString (dislikeCounter, *&dislikers);
+		add(dislikeCounter, *&dislikers);
 		dislikers[dislikeCounter] = curUser;
 		++dislikeCounter;
 	}
@@ -104,7 +77,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (exist){
-		removethisString (likeCounter, idx, *&likers);
+		remove (likeCounter, idx, *&likers);
 		--likeCounter;
 	}
 
@@ -114,7 +87,7 @@ void Post::addcomment(string Comment){
 
 	Comment += '\n';
 	Comment += dateandtime.getDate();
-	addthisString (numberOfComments, *&comments);
+	add (numberOfComments, *&comments);
 	comments [numberOfComments] = Comment;
 	++numberOfComments;
 
@@ -122,7 +95,7 @@ void Post::addcomment(string Comment){
 
 void Post::deleteComment (int idx){
 	cout << numberOfComments << ' ' << idx <<  endl;
-	removethisString (numberOfComments, idx, *&comments);
+	remove (numberOfComments, idx, *&comments);
 	--numberOfComments;
 
 }
@@ -136,6 +109,12 @@ void Post::viewComments(){
 
 void Post::viewPostdetails(){
 	cout << likeCounter << " Likes "<< ' ' << dislikeCounter << " Dislikes " << ' ' << numberOfComments <<" Comments "<< endl;
+	for (int i = 0; i < likeCounter; i++)
+		cout << likers[i] << endl;
+	cout << endl;
+	for (int i = 0; i < dislikeCounter; i++)
+		cout << dislikers[i] << endl;
+
 }
 
 Post::~Post() {
@@ -147,13 +126,3 @@ Post::~Post() {
 
 }
 
-
-
-/*
- * problems
- *
- * -view must be a pure virtual function and I can't deal with them yet using base class.
- * -remove post should be done in user I think!
- * -edit same as remove
- * -remove and edit should delete current object and add new object
- */
