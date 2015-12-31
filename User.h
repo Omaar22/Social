@@ -1,68 +1,68 @@
 #ifndef USER_H
 #define USER_H
 #include "Post.h"
-#include "Poll.h"
-#include "Photo.h"
 #include "Status.h"
+#include "Message.h"
 
 #include <bits/stdc++.h>
-#include "Message.h"
 using namespace std;
 
-class User {
+class User
+{
 
-private:
-    string name, password, gender, email;
-    string birthDate;
-    string interests[3];
-    int numOfFriends;
-    int numOfPosts;
-    User *friends;
-    Post **posts;
-    vector <Message> receivedMessages;
-    vector <Message> sentMessages;
+    private:
 
-    void editInfo();
-    void putInPosts( Post *P ) ;
+        string name, password, gender, email, birthDate ;
+        int numOfFriends ;
+        int numOfPosts ;
+        string interests[3] ;
+        User **friends;
+        Post **posts;
 
-public:
+        vector <Message> receivedMessages;
+        vector <Message> sentMessages;
 
-    void viewInfo();
+        void putInPosts( Post *P ) ;
 
-    bool isFriend( User U );
-    void viewFriends();
-    void mutualFriends (User);
-    void addFriend( User U) ;
-    void removeFriend( User U) ;
-    void remove(User U) ;
+    public:
 
-    User searchUser( string mail );
+        void viewInfo(string);
+        void editInfo();
+        bool isFriend( string );
+        void viewFriends();
+        void addFriend( User* ) ;
+        void removeFriend( string ) ;
+        User getFriends();
 
-    void addPost();
-    void viewPosts();
-    void viewUser( User *&);
+        User searchUser( string );
 
-    void viewReceivedMessages();
-    void viewSentMessages();
+        void addPost();
+        void viewPosts();
+        void viewUser( User* );
 
-    void receiveMessage(Message);
-    void sendMessage();
+        void viewReceivedMessages();
+        void viewSentMessages();
 
-    void setName(string name);
-    string getName();
-    void setPassword(string password);
-    string getPassword();
-    void setEmail(string email);
-    string getEmail();
-    void setGender(int);
-    string getGender();
-    void setBirthDate( string birthDate);
-    string getBirthDate();
-    int getNumOfFriends();
+        void sendMessage(Message);
+        void recieveMessage(Message);
+        void sendMessageFun(User*);
+
+        void setName( string );
+        string getName();
+        void setPassword( string );
+        string getPassword();
+        void setEmail( string );
+        string getEmail();
+        void setGender( int );
+        string getGender();
+        void setBirthDate( string );
+        string getBirthDate();
+        int getNumOfFriends();
 
 
-    User();
-    ~User();
+
+        User();
+        ~User();
 
 };
 
