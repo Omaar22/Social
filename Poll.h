@@ -1,10 +1,11 @@
+//updated 31 DEC 2015
 //Maryam El-Sokkary
-//12:53 am 24.DEC.2015
 
 #ifndef POLL_H_
 #define POLL_H_
-
 #include "Post.h"
+
+using namespace std;
 
 class Poll : public Post {
 private:
@@ -20,13 +21,11 @@ public:
 	void addQuestion (string);
 	void addAnswers (string);
 	void removeAnswers (int);
-	void addthisInt (int, int*&);
-	void removethisInt (int, int, int*&);
 	void upVote (string, int);
 	void downVote (string, int);
 	virtual void view ();
-	//void edit ();
 	virtual ~Poll();
 };
 
 #endif /* POLL_H_ */
+
