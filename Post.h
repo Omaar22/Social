@@ -1,3 +1,6 @@
+//updated 31 DEC 2015
+//Maryam El-Sokkary
+
 #include <iostream>
 #include <cstring>
 #include "DateTime.h"
@@ -28,9 +31,6 @@ public:
 	void viewPostdetails();
 	void addcomment (string);
 	void deleteComment(int);
-	void addthisString (int, string*&);
-	void removethisString (int,int, string*&);
-	void edit (); //not sure yet!
 	virtual void view () = 0;
 	virtual ~Post();
 };
