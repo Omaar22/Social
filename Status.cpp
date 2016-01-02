@@ -38,10 +38,13 @@ void Status::view (){
 		cout << text << endl;
 	if (feeling.size())
 		cout << feeling << endl;
-	cout << time << endl;
+	cout << endl <<time << endl;
 }
 
 Status::~Status() {
 	// TODO Auto-generated destructor stub
 }
 
+string Status::getText() {
+	return text;
+}
