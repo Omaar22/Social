@@ -17,23 +17,23 @@ public:
     static bool validDate(string );
     bool validAccount();
 
-    void merge(User *a, int n, int m) ;
-    void merge_sort(User *a, int n) ;
+    static void merge(User **a, int n, int m) ;
+    static void merge_sort(User **a, int n) ;
 
     int findUser(string);
-    void AddUser(User U) ;
-    User searchUser(string);
-    void removeAccount(User user) ; /// not complete
+    void AddUser(User *U) ;
+    User* searchUser(string);
 
     ~System();
 
 private:
-    User *listOfUsers ;
-    int numOfUsers = 0 ;
-    User loggedInUser ;
+    User **listOfUsers ;
+    int numOfUsers ;
+    User *loggedInUser ;
     void signUp();
     void signIn() ;
-
+    void readFromFile();
+    void writeToFile();
 };
 
 #endif // SYSTEM_H
