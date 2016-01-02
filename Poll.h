@@ -1,6 +1,3 @@
-//updated 31 DEC 2015
-//Maryam El-Sokkary
-
 #ifndef POLL_H_
 #define POLL_H_
 #include "Post.h"
@@ -17,14 +14,19 @@ private:
 	int numberOfAnswers;
 
 public:
+
 	Poll();
 	void addQuestion (string);
 	void addAnswers (string);
 	void removeAnswers (int);
-	void upVote (string, int);
-	void downVote (string, int);
+	virtual void upVote (string, int);
+	virtual void downVote (string, int);
 	virtual void view ();
 	virtual ~Poll();
+	int getNumberOfAnswers();
+	string getQuestion();
+	string getAnswer(int index);
+
 };
 
 #endif /* POLL_H_ */
