@@ -1,5 +1,5 @@
-#ifndef SOCIAL_DATETIME_H
-#define SOCIAL_DATETIME_H
+#ifndef DATETIME_H_
+#define DATETIME_H_
 
 #include <iostream>
 #include <string>
@@ -20,7 +20,7 @@ public:
 
     void setCurrent();
 
-    int calculateAge();
+    int calculateAge(string);
 
     string getDate();
     void setDate(string dayName, string dayNumber, string month, string year);
@@ -52,6 +52,4 @@ public:
     friend ostream& operator<< (ostream &out, DateTime &date);
 
 };
-
-
-#endif //SOCIAL_DATETIME_H
+#endif
