@@ -1,6 +1,5 @@
-//Maryam El-Sokkary
-//12:54 am 25.DEC.2015
 #include "Photo.h"
+#include "DateTime.h"
 
 Photo::Photo() {
 	photo = "";
@@ -14,10 +13,11 @@ void Photo:: addPhoto (string photo){
 
 void Photo::view(){
 	cout << photo << endl;
-	cout << time << endl;
+	cout << endl << time << endl;
 }
 
-Photo::~Photo() {
-	// TODO Auto-generated destructor stub
-}
+Photo::~Photo() {}
 
+string Photo::getPhoto() {
+	return photo;
+}
