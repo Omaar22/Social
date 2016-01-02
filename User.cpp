@@ -9,30 +9,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-User::User() : posts( new Post*[100] ) , numOfPosts(0) , numOfFriends(0) {}
+User::User() : posts( new Post*[100] ) , friends( new User*[50] ) , numOfPosts(0) , numOfFriends(0) {}
 User::~User() {}
 
 
 void User::editInfo()
 {
-    int chois ;
-    string s ;
-    cout << "Press the Number of What You Want To Edit ? " << endl;
-    cout << "1. Name\n2. Password\n3. Gender\n4. Email\n5. Date Of Birth\n6. Interests" << endl;
+    if (system("CLS")) system("clear");
+    cout << "El Social Network :\n\n\n";
+    cout << "Editing information\n\n";
+
+    char chois ; int g ;
+    string s = "" ;
+
+    cout << "1. Name\n2. Password\n3. Gender\n4. Email\n5. Date Of Birth\n6. Back\n\n";
+    cout << "Enter the Number of What You Want To Edit: ";
     cin >> chois ;
 
-    while( chois <= 0 || chois > 6 )
+    while( chois < '1' || chois > '6' )
     {
-        cout << "Wrong Choise, TRY AGAIN : " ;
+        cout << "Wrong Choice, Enter Again: " ;
         cin >> chois ;
     }
 
-    if( chois == 1 )
+    if( chois == '1' )
     {
         while(8)
         {
-            cout << "Enter The New Name : ";
-            s = "";
+            cout << "\nEnter The New Name: ";
             while( s == "") getline (cin , s) ;
             try
             {
@@ -41,16 +45,16 @@ void User::editInfo()
             }
             catch ( const char *c)
             {
-                cout << c ;
+                cout << "\n" << c ;
             }
 
         }
     }
-    else if( chois == 2 )
+    else if( chois == '2' )
     {
         while(8)
         {
-            cout << "Enter The New Password : ";
+            cout << "\nEnter The New Password: ";
             cin >> s ;
             try
             {
@@ -59,17 +63,16 @@ void User::editInfo()
             }
             catch ( const char *c)
             {
-                cout << c ;
+                cout << "\n" << c ;
             }
 
         }
     }
-    else if( chois == 3 )
+    else if( chois == '3' )
     {
         while(8)
         {
-            int g ;
-            cout << "Enter Gender: ";
+            cout << "\nEnter Gender (1 for Male , 2 for Female ): ";
             cin >> g ;
             try
             {
@@ -78,19 +81,18 @@ void User::editInfo()
             }
             catch ( const char *c)
             {
-                cout << c ;
+                cout << "\n" << c ;
             }
 
         }
 
     }
-    else if( chois == 4 )
+    else if( chois == '4' )
     {
         while(8)
         {
-            cout << "Enter The New Email : ";
-            s = "";
-            while( s == "") getline (cin , s) ;
+            cout << "\nEnter The New Email: ";
+            while( s == "" ) getline (cin , s) ;
             try
             {
                 setEmail(s);
@@ -98,22 +100,22 @@ void User::editInfo()
             }
             catch ( const char *c)
             {
-                cout << c ;
+                cout << "\n" << c ;
             }
 
         }
     }
-    else if( chois == 5 )
+    else if( chois == '5' )
     {
         while(8)
         {
             string date = "" , day , month , year ;
-            cout << "Enter The New Date : ";
-            cout << "Day : " ;
+            cout << "\nEnter The New Date:\n";
+            cout << "\nDay : " ;
             cin >> day ;
-            cout << "/nMonth : " ;
+            cout << "\nMonth : " ;
             cin >> month ;
-            cout << "/nDay : " ;
+            cout << "\nYear : " ;
             cin >> year ;
 
             if (day.size() == 1) day = '0' + day ;
@@ -127,49 +129,128 @@ void User::editInfo()
             }
             catch ( const char *c)
             {
-                cout << c;
+                cout << "\n" << c ;
             }
         }
     }
     else
     {
-        cout << "Enter 3 New Interests: \n";
-
-        for(int i=0 ; i<3 ; i++)
-        {
-            cin >> s ;
-            interests[i] = s ;
-        }
+        return ;
     }
 
 }
 void User::viewInfo( string m )
 {
-    //DateTime dt ;
-    cout << "Name : " << name << endl;
-    cout << "Gender : " << gender << endl;
-    cout << "Email : " << email << endl;
-    //cout << "Age : " << dt.calculateAge( birthDate ) ;
-    cout << "Date Of Birth : " << birthDate << endl;
-    cout << "Number Of friends: " << numOfFriends << endl;
-    cout << "Interests : ";
-    for(int i=0 ; i<3 ; i++) cout << interests[i] << " " ;
-    cout << endl;
+    if (system("CLS")) system("clear");
+    cout << "El Social Network :\n\n\n";
+    cout << "About\n\n";
 
+    DateTime dt ;
+    string year  ;
+    year+= birthDate[6] ;
+    year+= birthDate[7] ;
+    year+= birthDate[8] ;
+    year+= birthDate[9] ;
+
+    cout << "Name : " << name;
+    cout << "\n\nGender : " << gender;
+    cout << "\n\nEmail : " << email;
+    cout << "\n\nAge : " << dt.calculateAge( year );
+    cout << "\n\nDate Of Birth : " << birthDate;
+    cout << "\n\nNumber Of friends: " << numOfFriends;
+    cout << "\n\n";
+
+    string chois;
     if( email == m )
     {
-        cout << "Do You Want To Edit Info ? ( 1. Yes  2. No ) \n";
-        int chois;
+        cout << "Do You Want To Edit Info ? ( 1. Yes  2. Back ) : ";
         cin >> chois ;
-        while(chois != 1 && chois != 2)
+        while(chois != "1" && chois != "2" )
         {
-            cout << "Wrong Chois, TRY AGAIN : ";
+            cout << "Wrong Choice, Enter Again : ";
             cin >> chois ;
         }
-        if( chois == 1 )
+        if( chois == "1" ) editInfo();
+    }
+    else
+    {
+        cout << "\nPress any key to go back: ";
+        cin >> chois ;
+    }
+}
+void User::viewUser( User *logged , User *caller)
+{
+    if (system("CLS")) system("clear");
+    int choice;
+    cout << endl << name << endl;
+    if( logged->isFriend(caller->getEmail()) )
+    {
+        cout << "1. Send Massage\n2. View Information\n3. View Posts\n4. Remove From Friends\n5. Back\n\nEnter choice: " << endl;
+        cin >> choice;
+        while( choice < 0 && choice > 4)
         {
-            editInfo();
+            cout << "Wrong Choice, Enter Again: ";
+            cin >> choice ;
         }
+        if( choice == 1 )
+        {
+            string s ;
+            s = "";
+            cout << "\nEnter Massage : ";
+            while( s == "") getline ( cin , s );
+
+            Message msg(s , name , logged->getName() ) ;
+            logged->sendMessage( msg ) ;
+            receivedMessages.push_back(msg);
+        }
+        else if ( choice == 2 )
+        {
+            viewInfo( logged->getEmail() ) ;
+        }
+        else if( choice == 3 )
+        {
+            viewPosts(logged);
+        }
+        else if( choice == 4 )
+        {
+            logged->removeFriend( email );
+            removeFriend(logged->getEmail()) ;
+        }
+        else return ;
+
+    }
+    else
+    {
+        string Back ;
+        cout << "1. Send Massage\n2. Add Friend\n3. Back\n\nEnter choice: ";
+        cin >> choice;
+        while( choice < 0 && choice > 3)
+        {
+            cout << "Wrong Choice, Enter Again: " ;
+            cin >> choice ;
+        }
+        if( choice == 1 )
+        {
+            string s = "" ;
+            cout << "\nEnter Massage: ";
+            while(s == "")
+            getline ( cin , s );
+
+            Message msg(s , name , logged->getName() ) ;
+            logged->sendMessage( msg ) ;
+            receivedMessages.push_back(msg);
+            cout << "\nPress any key to go Back: ";
+            cin >> Back ;
+        }
+        else if ( choice == 2 )
+        {
+            friends[numOfFriends++] = logged;
+            logged->addFriend(caller) ;
+            cout << "\nPress any key to go Back: ";
+            cin >> Back ;
+        }
+        else return ;
+
     }
 }
 
@@ -183,139 +264,61 @@ bool User::isFriend( string mail )
     }
     return 0 ;
 }
-void User::viewFriends()
+void User::viewFriends( User *logged )
 {
-    int number , chois ;
-    cout << endl << "Friends :" << endl;
+    int number ;
+    string chois ;
+    cout << "Friends \n";
     for(int i=0 ; i<numOfFriends ; i++)
     {
         cout << i+1 << ". " << friends[i]->getName() << endl;
     }
     cout << endl;
-    cout << "Do You Want To view Some One Profile ? " << endl << "1. Yes  2.No" << endl;
-    cin >> chois ;
-    if( chois == 1 )
+    if( numOfFriends )
     {
-        cout << "Enter Number Of Friend To View Profile : " ;
-        cin >> number ;
-        while( number < 0 || number > numOfFriends )
+        cout << "Do You Want To view Some One Profile ?\n1. Yes  2.Back\n";
+        cin >> chois ;
+        if( chois == "1" )
         {
-            cout << "Wrong Choise, TRY AGAIN : ";
+            cout << "Enter Number Of Friend To View Profile : " ;
             cin >> number ;
+            while( number < 0 || number > numOfFriends )
+            {
+                cout << "Wrong Choise, Enter Again : ";
+                cin >> number ;
+            }
+            friends[ number-1 ]->viewUser( logged , friends[ number-1 ]) ;
         }
-        friends[ number-1 ]->viewUser( this ) ;
+        else return ;
     }
+    else
+    {
+        cout << "No friends to show\n";
+    }
+
+    cout << "Press any key to go back: ";
+    string x ; cin >> x ;
+
 }
 void User::addFriend( User *U )
 {
-    numOfFriends++;
-    User **tmpFriends = new User*[ numOfFriends ] ;
-
-    for(int i=0 ; i<numOfFriends-1 ; i++)
+    if( numOfFriends > 50 )
     {
-        tmpFriends[i] = friends[i];
+        cout << "You can't add more friends\n";
+        return ;
     }
-
-    //delete[] friends;
-    tmpFriends[ numOfFriends-1 ] = U ;
-    friends = new User*[ numOfFriends ] ;
-
-    for(int i=0 ; i<numOfFriends ; i++)
-    {
-        friends[i] = tmpFriends[i] ;
-    }
-
-    delete[] tmpFriends ;
-//    merge_sort( friends , numOfFriends ) ;
+    friends[numOfFriends++] = U ;
+    System::merge_sort( friends , numOfFriends ) ;
 
 }
 void User::removeFriend( string mail )
 {
+    int ch = 0 ;
     numOfFriends--;
-    User **tmpFriends = new User*[ numOfFriends ] ;
-
-    for(int i=0,j=0 ; i<=numOfFriends ; i++)
+    for(int i=0 ;i <numOfFriends ;i++)
     {
-        if( friends[i]->getEmail() != mail )
-            tmpFriends[j++] = friends[i];
-    }
-    //delete[] friends;
-
-    friends = new User*[ numOfFriends ] ;
-
-    for(int i=0 ; i<numOfFriends ; i++)
-        friends[i] = tmpFriends[i] ;
-
-    delete[] tmpFriends ;
-}
-
-
-//////////////////
- void User::viewUser( User *logged )
-{
-    int choice;
-    cout << endl << name << endl;
-
-    if( isFriend(logged->getEmail()) )
-    {
-        cout << "1. Send Massage\n2. View Information\n3. View Posts\n4. Remove From Friends\n6. No Thanks" << endl;
-        cin >> choice;
-        while( choice < 0 && choice > 4)
-        {
-            cout << "Wrong Choice, Enter Again: ";
-            cin >> choice ;
-        }
-        if( choice == 1 )
-        {
-            string s ;
-            s = "";
-            cout << "Enter Massage : ";
-            while( s == "") getline ( cin , s );
-
-            Message msg(s , name , logged->getName() ) ;
-            logged->sendMessage( msg ) ;
-            receivedMessages.push_back(msg);
-        }
-        else if ( choice == 2 )
-        {
-            viewInfo( logged->getEmail() ) ;
-        }
-        else if( choice == 3 )
-        {
-            viewPosts();
-        }
-        else if( choice == 4 )
-        {
-            logged->removeFriend( email );
-            removeFriend(logged->getEmail()) ;
-        }
-
-    }
-    else
-    {
-        cout << "1. Send Massage/n2.Add Friend/n3. No Thanks";
-        while( choice < 0 && choice > 3)
-        {
-            cout << "Wrong Choice, TRY AGAIN : " ;
-            cin >> choice ;
-        }
-        if( choice == 1 )
-        {
-            string s = "" ;
-            cout << "Enter Massage : ";
-            while(s == "")
-            getline ( cin , s );
-
-            Message msg(s , name , logged->getName() ) ;
-            logged->sendMessage( msg ) ;
-            receivedMessages.push_back(msg);
-        }
-        else if ( choice == 2 )
-        {
-            addFriend(logged) ;
-            logged->addFriend(this) ;
-        }
-
+        if( friends[i]->getEmail() == mail ) ch++;
+        if( ch ) friends[i] = friends[i+1];
     }
 }
 
@@ -323,43 +326,57 @@ void User::removeFriend( string mail )
 
 void User::addPost()
 {
-    int choice ;
-    string s ;
-    cout << "1. Status\n2. Poll\n3. Photo/Video" << endl;
-    cout << "\nEnter choice : " ;
+    if( numOfPosts > 100 )
+    {
+        cout << "you can't add more posts\n";
+        return;
+    }
+    cout << "1. Status\n2. Poll\n3. Photo/Video\n" << endl;
+
+    addAgain :
+    string choice , s = "" , x , t = "";
+    cout << "\nEnter choice: " ;
     cin >> choice;
 
-    while( choice < 0 || choice > 3)
+    while( choice != "1" && choice != "2" && choice != "3")
     {
-        cout << "Wrong Choise, TRY AGAIN : ";
+        cout << "Wrong Choise, Enter Again : ";
         cin >> choice ;
     }
 
-    if( choice == 1 )
+    if( choice == "1" )
     {
         Status *st = new Status;
-        cout << "Enter Status : ";
+        cout << "\nEnter Status : ";
 
-        s = "";
         while(s == "") getline( cin , s);
+
+        cout << "Add feeling ?   ( 1. Yes  2. No ) : ";
+        cin >> x ;
+
+        if( x == "1" )
+        {
+            cout << "Enter what you feel: ";
+            while(t == "") getline( cin , t);
+            s = "Feeling " + t + "\n" + s ;
+        }
 
         st->addStatus(s) ;
         putInPosts( st );
     }
 
-    else if( choice == 2)
+    else if( choice == "2" )
     {
         Poll *pol = new Poll ;
         int num ;
-        cout << "Enter Question : ";
-        s = "";
+        cout << "\nEnter Question: ";
         while(s == "") getline( cin , s ) ;
 
-        cout << "Enter Number Of answers : ";
+        cout << "Enter Number Of answers: ";
         cin >> num ;
 
         string ans;
-        cout << "Enter The Answers : ";
+        cout << "\nEnter The Answers\n";
 
         pol->addQuestion( s ) ;
 
@@ -376,24 +393,97 @@ void User::addPost()
     else
     {
         Photo *pv = new Photo;
-        cout << "Enter Link : ";
-        s = "";
+        cout << "\nEnter Link : ";
         while( s == "") getline( cin , s ) ;
 
         pv->addPhoto( s ) ;
         putInPosts( pv );
     }
 
+    cout << "\n1. Add another post\n2. Back\n";
+    char r ; cin >> r;
+    if( r == '1' ) goto addAgain ;
+
 }
 void User::putInPosts( Post *P )
 {
     posts[numOfPosts++] = P;
 }
-void User::viewPosts()
+void User::viewPosts( User *logged)
 {
+    char x ;
+    if (numOfPosts == 0)
+    {
+        cout << "No posts to show!\n\nPress any key to go back: ";
+        string x ; cin >> x ;
+
+    }
     for(int i=0 ; i<numOfPosts ; i++)
     {
-        posts[i]->view();
+        cout << "\n";
+        posts[i]->view() ;
+        Poll *p = dynamic_cast <Poll*> (posts[i]);
+
+        posts[i]->viewPostdetails() ;
+        cout << "\n1. Like\n2. dislike\n3. comment\n4. View comments\n5. View likers and dislikers\n";
+        if(p)
+        {
+            cout << "6. Up vote answer \n7. Down vote answer\n8. See other posts\n";
+        }
+        else cout << "6. See other posts\n";
+
+        cin >> x ;
+        while( ( !p && (x < '0'  || x > '6') ) || ( p && ( x < '0' || x > '8' ) ) )
+        {
+            cout << "Wrong Choice, Enter Again: ";
+            cin >> x ;
+        }
+        if( x == '1' )
+        {
+            posts[i]->like( logged->getName() );
+        }
+        else if( x == '2' )
+        {
+            posts[i]->dislike( logged->getName() );
+        }
+        else if( x == '3' )
+        {
+            string s = "" ;
+            cout << "Enter Comment: ";
+            while( s == "" ) getline( cin , s );
+            s = logged->getName() + ": " + s ;
+            posts[i]->addcomment(s);
+        }
+        else if( x == '4' )
+        {
+            posts[i]->viewComments();
+        }
+        else if( x == '5' )
+        {
+            posts[i]->viewLikers();
+        }
+        else if( p && x == '6' )
+        {
+            int num ;
+            cout << "\nEnter the number of answer: ";
+            cin >> num;
+            posts[i]->upVote( logged->getName() , num-1 ) ;
+        }
+        else if( p && x == '7' )
+        {
+            int num ;
+            cout << "\nEnter the number of answer: ";
+            cin >> num;
+            posts[i]->downVote( logged->getName() , num-1 ) ;
+        }
+
+        cout << "\n************************************\n";
+        if( i == numOfPosts-1 )
+        {
+             cout << "No more posts\n\nPress any key to go back: ";
+             string x ; cin >> x ;
+        }
+
     }
 }
 
@@ -412,7 +502,7 @@ void User::sendMessageFun(User *U)
         cout << "Enter Message Text : " ;
         string s;
         s = "";
-        while( s == "" );
+        while( s == "" )
         getline( cin , s ) ;
 
         Message msg(s , U->getName() , name) ;
@@ -444,7 +534,6 @@ void User::setBirthDate( string date)
     }
     birthDate = date ;
 }
-
 void User::setPassword( string pass)
 {
     if (!System::strongPassword(pass))
@@ -454,7 +543,6 @@ void User::setPassword( string pass)
     }
     password = pass;
 }
-
 void User::setGender(int g)
 {
     if (g != 1 && g != 2)
@@ -464,21 +552,19 @@ void User::setGender(int g)
     else if (g == 1) gender = "Male";
     else gender ="Female";
 }
-
 void User::setEmail(string mail)
 {
-    int x = System::validEmail(mail) ;
+    bool x = System::validEmail(mail) ;
     if ( x == 2)
     {
         throw "Email already Exists";
     }
-    else if (x == 3)
+    else if (x == 0)
     {
         throw "Invalid Email";
     }
     else email = mail;
 }
-
 void User::setName(string name)
 {
     if (!System::validName(name))
@@ -487,6 +573,8 @@ void User::setName(string name)
     }
     this->name = name;
 }
+
+////////////////////
 
 string User::getBirthDate()
 {
@@ -511,4 +599,19 @@ string User::getName()
 int User::getNumOfFriends()
 {
     return numOfFriends ;
+}
+User *User::getFriends(int index) {
+    return friends[index];
+}
+vector<Message> User::getReceivedMessages() {
+    return receivedMessages;
+}
+vector<Message> User::getsentMessages() {
+    return sentMessages;
+}
+int User::getNumOfPosts() {
+    return numOfPosts;
+}
+Post *User::getPost(int index) {
+    return posts[index];
 }
