@@ -1,6 +1,3 @@
-//
-// Created by Omar Mohamed on 19/12/2015.
-//
 
 #ifndef SOCIAL_MESSAGE_H
 #define SOCIAL_MESSAGE_H
