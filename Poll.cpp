@@ -1,6 +1,3 @@
-//updated 31 DEC 2015
-//Maryam El-sokkary
-
 #include "Poll.h"
 #include "Template.h"
 
@@ -56,9 +53,8 @@ void Poll::view(){
 	cout << Question << endl;
 
 	for (int i = 0; i < numberOfAnswers; i++ )
-		cout << answers[i] << ' '<< votes [i] << endl;
-	cout << endl;
-	cout << time;
+		cout << i+1 << ". " << answers[i] << ' '<< votes [i] << endl;
+	cout << endl << time << endl;
 }
 
 Poll::~Poll() {
@@ -80,3 +76,12 @@ Poll::~Poll() {
  *
  * note: user can't down vote an answer if he hasn't up voted it
  */
+int Poll::getNumberOfAnswers() {
+	return numberOfAnswers;
+}
+string Poll::getQuestion() {
+	return Question;
+}
+string Poll::getAnswer(int index) {
+	return answers[index];
+}
