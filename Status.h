@@ -21,9 +21,9 @@ public:
 	void viewFeelings ();
 	void addFeeling (int);
 	void addStatus (string);
-	//void edit ();
 	virtual void view ();
 	virtual ~Status();
+	string getText();
 };
 
 #endif /* STATUS_H_ */
