@@ -1,8 +1,5 @@
-//
-// Created by Omar Mohamed on 20/12/2015.
-//
-
 #include "DateTime.h"
+#include <bits/stdc++.h>
 
 void DateTime::setCurrent() {
     time_t now = time(NULL);
@@ -84,14 +81,21 @@ void DateTime::setTime(string second, string minute, string hour) {
     this->hour = hour;
 }
 
-int DateTime::calculateAge() {
-    int year = stoi(this->year);
+int DateTime::calculateAge(string YEAR) {
+    stringstream ss;
+    int y ,thisYear ;
+    ss << YEAR ;
+    ss >> y ;
+    ss.clear();
 
     DateTime now;
     now.setCurrent();
-    int thisYear = stoi(now.getYear());
 
-    return thisYear - year;
+    ss << now.getYear() ;
+    ss >> thisYear;
+    ss.clear();
+
+    return thisYear - y;
 }
 
 DateTime::DateTime() {
@@ -129,4 +133,3 @@ ostream &operator<<(ostream &out, DateTime &date) {
     out << date.getDate();
     return out;
 }
-
