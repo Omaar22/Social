@@ -1,5 +1,3 @@
-//Maryam El-Sokkary
-//12:56 am 24.DEC.2015
 
 #ifndef PHOTO_H_
 #define PHOTO_H_
@@ -15,6 +13,7 @@ public:
 	void addPhoto (string);
 	virtual void view ();
 	virtual ~Photo();
+	string getPhoto();
 };
 
 #endif /* PHOTO_H_ */
