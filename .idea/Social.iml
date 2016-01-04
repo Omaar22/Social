@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Message.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DateTime.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/System.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Status.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/System.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/User.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Photo.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Photo.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Post.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/User.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Status.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Message.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Post.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Poll.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Poll.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DateTime.h" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://C:/Win-builds/include" />
+          <root url="file://C:/Win-builds/lib/gcc/i686-w64-mingw32/4.8.3/include" />
+          <root url="file://C:/Win-builds/lib/gcc/i686-w64-mingw32/4.8.3/include-fixed" />
+          <root url="file://C:/Win-builds/i686-w64-mingw32/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://C:/Win-builds/include" />
+          <root url="file://C:/Win-builds/lib/gcc/i686-w64-mingw32/4.8.3/include" />
+          <root url="file://C:/Win-builds/lib/gcc/i686-w64-mingw32/4.8.3/include-fixed" />
+          <root url="file://C:/Win-builds/i686-w64-mingw32/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
