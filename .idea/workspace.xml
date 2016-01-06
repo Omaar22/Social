@@ -12,38 +12,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e11220e9-2cb1-4c51-8d58-44e09d457eff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Social.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DateTime.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DateTime.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Message.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Message.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Notifications.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Notifications.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Photo.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Photo.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Poll.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Poll.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Post.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Post.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Status.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Status.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/System.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/System.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/User.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/User.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.cpp" />
-    </list>
+    <list default="true" id="e11220e9-2cb1-4c51-8d58-44e09d457eff" name="Default" comment="" />
     <ignored path="Social.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,13 +39,14 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3704975">
-              <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.30017152">
+              <caret line="159" column="30" selection-start-line="159" selection-start-column="30" selection-end-line="159" selection-end-column="30" />
               <folding>
                 <element signature="e#43#2179#0" expanded="false" />
                 <element signature="e#2185#2360#0" expanded="false" />
                 <element signature="e#2366#3166#0" expanded="false" />
                 <element signature="e#3168#3543#0" expanded="false" />
+                <element signature="e#3545#6561#0" expanded="false" />
                 <element signature="e#6563#9174#0" expanded="false" />
                 <element signature="e#9176#14843#0" expanded="false" />
                 <element signature="e#14845#17311#0" expanded="false" />
@@ -461,6 +431,7 @@
             <element signature="e#2185#2360#0" expanded="false" />
             <element signature="e#2366#3166#0" expanded="false" />
             <element signature="e#3168#3543#0" expanded="false" />
+            <element signature="e#3545#6561#0" expanded="false" />
             <element signature="e#6563#9174#0" expanded="false" />
             <element signature="e#9176#14843#0" expanded="false" />
             <element signature="e#14845#17311#0" expanded="false" />
@@ -566,6 +537,7 @@
             <element signature="e#2185#2360#0" expanded="false" />
             <element signature="e#2366#3166#0" expanded="false" />
             <element signature="e#3168#3543#0" expanded="false" />
+            <element signature="e#3545#6561#0" expanded="false" />
             <element signature="e#6563#9174#0" expanded="false" />
             <element signature="e#9176#14843#0" expanded="false" />
             <element signature="e#14845#17311#0" expanded="false" />
@@ -792,13 +764,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3704975">
-          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.30017152">
+          <caret line="159" column="30" selection-start-line="159" selection-start-column="30" selection-end-line="159" selection-end-column="30" />
           <folding>
             <element signature="e#43#2179#0" expanded="false" />
             <element signature="e#2185#2360#0" expanded="false" />
             <element signature="e#2366#3166#0" expanded="false" />
             <element signature="e#3168#3543#0" expanded="false" />
+            <element signature="e#3545#6561#0" expanded="false" />
             <element signature="e#6563#9174#0" expanded="false" />
             <element signature="e#9176#14843#0" expanded="false" />
             <element signature="e#14845#17311#0" expanded="false" />
