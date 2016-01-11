@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "System.h"
 
 System mySystem;
