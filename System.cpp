@@ -16,32 +16,6 @@ User *System::getUser(int index) {
     return users[index];
 }
 
-bool System::validName(string name) {
-    for (char X : name)
-        if (!('a' <= X && X <= 'z' || 'A' <= X && X <= 'Z' || X == ' '))
-            return false;
-
-    return name.size() != 0;
-}
-bool System::strongPassword(string P) {
-    bool U = 0, L = 0, D = 0;
-    for (int i = 0; i < P.size(); i++) {
-        if (islower(P[i]))
-            L = true;
-        else if (isupper(P[i]))
-            U = true;
-        else if (isdigit(P[i]))
-            D = true;
-    }
-    return P.size() >= 8 && L && U && D;
-}
-bool System::validEmail(string P) {
-    int f1 = P.rfind('@');
-    int f2 = P.rfind(".com");
-    int f3 = P.find(' ');
-    return f1 != -1 && f2 != -1 && (f2 - f1) > 1 && f3 == -1;
-}
-
 void System::mergeSort(User **arr, int N) {
     if (N < 2)
         return;
@@ -67,19 +41,26 @@ void System::mergeSort(User **arr, int N) {
     delete[] tmp;
 }
 
-int System::findUser(int lower, int upper, string email) {
-    if (lower > upper)
-        return -1;
-    int mid = (lower + upper) / 2;
+int System::findUser(string email) {
+    int lower = 0, upper = usersCount - 1;
+    while (lower <= upper) {
+        int mid = (lower + upper) / 2;
 
-    if (users[mid]->getEmail() > email)
-        return findUser(lower, mid - 1, email);
-    if (users[mid]->getEmail() < email)
-        return findUser(mid + 1, upper, email);
-    return mid;
+        if (users[mid]->getEmail() > email)
+            upper = mid - 1;
+        else if (users[mid]->getEmail() < email)
+            lower = mid + 1;
+        else
+            return mid;
+    }
+    return -1;
 }
 
-void System::addUser(User *newUser) {
+int System::getUsersCount() {
+    return usersCount;
+}
+
+void System::signUp(User *newUser) {
 
     User **newUsers = new User *[usersCount + 1];
 
@@ -91,9 +72,8 @@ void System::addUser(User *newUser) {
     users[usersCount++] = newUser;
     mergeSort(users, usersCount);
 }
-
-bool System::logIn(string email, string password) {
-    int index = findUser(0, usersCount - 1, email);
+bool System::signIn(string email, string password) {
+    int index = findUser(email);
 
     if (index == -1 || users[index]->getPassword() != password)
         return false;
@@ -101,9 +81,11 @@ bool System::logIn(string email, string password) {
     loggedInUser = users[index];
     return true;
 }
-
-int System::getUsersCount() {
-    return usersCount;
+bool System::isSignedIn() {
+    return loggedInUser != NULL;
+}
+void System::signOut() {
+    loggedInUser = NULL;
 }
 
 System::~System() {
