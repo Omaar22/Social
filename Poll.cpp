@@ -1,8 +1,4 @@
 #include "Poll.h"
-<<<<<<< HEAD
-=======
-#include "Template.h"
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 
 Poll::Poll() {
 
@@ -20,7 +16,6 @@ void Poll::addQuestion(string Question){
 	time += dateandtime.getTime();
 }
 
-<<<<<<< HEAD
 void Poll:: addthisInt (int size, int *&p){
 
 	int *tmp = new int [size+1];
@@ -57,14 +52,6 @@ void Poll::addAnswers(string Answer){
 
 	addthisString(numberOfAnswers, *&answers);
 	addthisInt (numberOfAnswers, *&votes);
-=======
-
-
-void Poll::addAnswers(string Answer){
-
-	add(numberOfAnswers, *&answers);
-	add (numberOfAnswers, *&votes);
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 	votes[numberOfAnswers] = 0;
 	answers[numberOfAnswers] = Answer;
 	++numberOfAnswers;
@@ -83,15 +70,9 @@ void Poll::downVote(string curUser, int idx){
 }
 
 void Poll::removeAnswers(int idx){
-<<<<<<< HEAD
 	removethisString (numberOfAnswers, idx, *&answers);
 
 	removethisInt (numberOfAnswers, idx, *&votes);
-=======
-	remove (numberOfAnswers, idx, *&answers);
-
-	remove(numberOfAnswers, idx, *&votes);
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 	--numberOfAnswers;
 
 }
@@ -101,14 +82,9 @@ void Poll::view(){
 	cout << Question << endl;
 
 	for (int i = 0; i < numberOfAnswers; i++ )
-<<<<<<< HEAD
 		cout << answers[i] << ' '<< votes [i] << endl;
 	cout << endl;
 	cout << time;
-=======
-		cout << i+1 << ". " << answers[i] << ' '<< votes [i] << endl;
-	cout << endl << time << endl;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }
 
 Poll::~Poll() {
@@ -130,15 +106,3 @@ Poll::~Poll() {
  *
  * note: user can't down vote an answer if he hasn't up voted it
  */
-<<<<<<< HEAD
-=======
-int Poll::getNumberOfAnswers() {
-	return numberOfAnswers;
-}
-string Poll::getQuestion() {
-	return Question;
-}
-string Poll::getAnswer(int index) {
-	return answers[index];
-}
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22

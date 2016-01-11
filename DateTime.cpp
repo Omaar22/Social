@@ -1,8 +1,4 @@
 #include "DateTime.h"
-<<<<<<< HEAD
-=======
-#include <bits/stdc++.h>
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 
 void DateTime::setCurrent() {
     time_t now = time(NULL);
@@ -31,19 +27,10 @@ void DateTime::setCurrent() {
             year = tmp;
     }
 
-<<<<<<< HEAD
 }
 
 string DateTime::getDate()const {
     return dayName + " " + dayNumber + "/" + month + "/" + year;
-=======
-    stringDate = dayName + " " + dayNumber + "/" + month + "/" + year;
-    stringTime = hour + ":" + minute + ":" + second;
-}
-
-string DateTime::getDate() {
-    return stringDate;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }
 
 string DateTime::getDayName() {
@@ -63,11 +50,7 @@ string DateTime::getYear() {
 }
 
 string DateTime::getTime() {
-<<<<<<< HEAD
     return hour + ":" + minute + ":" + second;
-=======
-    return stringTime;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }
 
 string DateTime::getSecond() {
@@ -82,19 +65,11 @@ string DateTime::getHour() {
     return hour;
 }
 
-<<<<<<< HEAD
 void DateTime::setDate(string dayNumber, string month, string year) {
     this->dayNumber = dayNumber;
     this->month = month;
     this->year = year;
     dayName = whatDay(stoi(year), stoi(month), stoi(dayNumber));
-=======
-void DateTime::setDate(string dayName, string dayNumber, string month, string year) {
-    this->dayName = dayName;
-    this->dayNumber = dayNumber;
-    this->month = month;
-    this->year = year;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }
 
 void DateTime::setTime(string second, string minute, string hour) {
@@ -103,7 +78,6 @@ void DateTime::setTime(string second, string minute, string hour) {
     this->hour = hour;
 }
 
-<<<<<<< HEAD
 int DateTime::calculateAge() {
     int year = stoi(this->year);
 
@@ -112,23 +86,6 @@ int DateTime::calculateAge() {
     int thisYear = stoi(now.getYear());
 
     return thisYear - year;
-=======
-int DateTime::calculateAge(string YEAR) {
-    stringstream ss;
-    int y ,thisYear ;
-    ss << YEAR ;
-    ss >> y ;
-    ss.clear();
-
-    DateTime now;
-    now.setCurrent();
-
-    ss << now.getYear() ;
-    ss >> thisYear;
-    ss.clear();
-
-    return thisYear - y;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }
 
 DateTime::DateTime() {
@@ -162,7 +119,6 @@ void DateTime::setMinute(string minute) {
 void DateTime::setHour(string hour) {
     this->hour = hour;
 }
-<<<<<<< HEAD
 
 ostream &operator<<(ostream &out, const DateTime &date) {
     out << date.getDate();
@@ -271,9 +227,3 @@ string DateTime::whatDay(int Y, int M, int D) {
 
 }
 
-=======
-ostream &operator<<(ostream &out, DateTime &date) {
-    out << date.getDate();
-    return out;
-}
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22

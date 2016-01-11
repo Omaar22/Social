@@ -5,17 +5,18 @@
       <sourceFolder url="file://$MODULE_DIR$/Message.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DateTime.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/System.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Template.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Status.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Message.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/User.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/System.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Notifications.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/User.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Photo.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Message.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Photo.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Post.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/User.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Photo.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Status.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Notifications.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Post.cpp" isTestSource="false" />

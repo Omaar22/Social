@@ -1,5 +1,4 @@
 #include "Photo.h"
-#include "DateTime.h"
 
 Photo::Photo() {
 	photo = "";
@@ -13,11 +12,10 @@ void Photo:: addPhoto (string photo){
 
 void Photo::view(){
 	cout << photo << endl;
-	cout << endl << time << endl;
+	cout << time << endl;
 }
 
-Photo::~Photo() {}
-
-string Photo::getPhoto() {
-	return photo;
+Photo::~Photo() {
+	// TODO Auto-generated destructor stub
 }
+

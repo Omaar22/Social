@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "System.h"
 
 System mySystem;
@@ -571,15 +570,4 @@ int main() {
         loggedInPage();
     }
 
-=======
-#include <iostream>
-#include "System.h"
-using namespace std;
-int main() {
-    System hello;
-
-    hello.startMinue();
-
-    return 0;
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 }

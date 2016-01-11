@@ -1,8 +1,7 @@
+#ifndef PHOTO_H
+#define PHOTO_H
 
-#ifndef PHOTO_H_
-#define PHOTO_H_
-
-#include "Post.h";
+#include "Post.h"
 
 class Photo : public Post {
 private:
@@ -13,7 +12,6 @@ public:
 	void addPhoto (string);
 	virtual void view ();
 	virtual ~Photo();
-	string getPhoto();
 };
 
-#endif /* PHOTO_H_ */
+#endif //PHOTO_H

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 #ifndef SOCIAL_MESSAGE_H
 #define SOCIAL_MESSAGE_H
 
@@ -26,11 +22,8 @@ public:
 
     string getText();
 
-<<<<<<< HEAD
     friend ostream &operator<<(ostream &out, const Message &M);
 
-=======
->>>>>>> a90df24badc5dd5e29dc22fc4fa894f659bceb22
 };
 
 
