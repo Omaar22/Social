@@ -12,7 +12,11 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e11220e9-2cb1-4c51-8d58-44e09d457eff" name="Default" comment="">
+=======
+    <list default="true" id="e11220e9-2cb1-4c51-8d58-44e09d457eff" name="Default" comment="Revert &quot;Hello&quot;&#10;&#10;This reverts commit fcd2f2c2f78a264820e740bf85ed26f57915885a.&#10;&#10;# Conflicts:&#10;#&#9;.idea/Social.iml&#10;#&#9;.idea/workspace.xml&#10;#&#9;CMakeLists.txt&#10;#&#9;Message.cpp&#10;#&#9;System.cpp&#10;#&#9;System.h&#10;#&#9;User.cpp&#10;#&#9;User.h&#10;#&#9;main.cpp&#10;">
+>>>>>>> Update
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Social.iws" />
@@ -41,9 +45,22 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.27226028">
               <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
               <folding />
+=======
+            <state vertical-scroll-proportion="-1.9536878">
+              <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+              <folding>
+                <element signature="e#43#2179#0" expanded="false" />
+                <element signature="e#2185#2360#0" expanded="false" />
+                <element signature="e#2366#3166#0" expanded="false" />
+                <element signature="e#6563#9174#0" expanded="false" />
+                <element signature="e#9176#14843#0" expanded="false" />
+                <element signature="e#14845#17311#0" expanded="false" />
+              </folding>
+>>>>>>> Update
             </state>
           </provider>
         </entry>
@@ -52,7 +69,11 @@
         <entry file="file://$PROJECT_DIR$/System.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+>>>>>>> Update
               <folding />
             </state>
           </provider>
@@ -62,7 +83,11 @@
         <entry file="file://$PROJECT_DIR$/User.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+=======
+              <caret line="195" column="32" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
+>>>>>>> Update
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#219#585#0" expanded="false" />
@@ -102,7 +127,11 @@
         <entry file="file://$PROJECT_DIR$/User.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+=======
+              <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+>>>>>>> Update
               <folding>
                 <element signature="e#31#48#0" expanded="true" />
               </folding>
@@ -110,6 +139,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="Notifications.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Notifications.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> Update
       <file leaf-file-name="Message.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Message.h">
           <provider selected="true" editor-type-id="text-editor">
@@ -166,6 +208,9 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="FORCE_PUSH_ALLOWED" value="true" />
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="Update" target-remote="origin" target-branch="master" />
+    </push-targets>
   </component>
   <component name="GithubProjectSettings">
     <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
@@ -285,7 +330,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Error" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+=======
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+>>>>>>> Update
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -363,10 +412,18 @@
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20522387" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66939443" sideWeight="0.5029762" order="9" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20461309" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66939443" sideWeight="0.5029762" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> Update
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -379,7 +436,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66939443" sideWeight="0.49702382" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -409,14 +465,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <element signature="e#43#2179#0" expanded="false" />
+            <element signature="e#2185#2360#0" expanded="false" />
+            <element signature="e#2366#3166#0" expanded="false" />
+            <element signature="e#6563#9174#0" expanded="false" />
+            <element signature="e#9176#14843#0" expanded="false" />
+            <element signature="e#14845#17311#0" expanded="false" />
+          </folding>
+>>>>>>> Update
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/System.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+>>>>>>> Update
           <folding />
         </state>
       </provider>
@@ -424,7 +495,11 @@
     <entry file="file://$PROJECT_DIR$/User.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="195" column="5" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+=======
+          <caret line="195" column="32" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
+>>>>>>> Update
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#219#585#0" expanded="false" />
@@ -462,13 +537,28 @@
     <entry file="file://$PROJECT_DIR$/User.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+=======
+          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+>>>>>>> Update
           <folding>
             <element signature="e#31#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/Notifications.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Update
     <entry file="file://$PROJECT_DIR$/Message.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -513,6 +603,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding />
         </state>
       </provider>
@@ -522,13 +613,37 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding />
+=======
+          <folding>
+            <element signature="e#43#2179#0" expanded="false" />
+            <element signature="e#2185#2360#0" expanded="false" />
+            <element signature="e#2366#3166#0" expanded="false" />
+            <element signature="e#6563#9174#0" expanded="false" />
+            <element signature="e#9176#14843#0" expanded="false" />
+            <element signature="e#14845#17311#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/User.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding>
+            <element signature="e#31#48#0" expanded="true" />
+          </folding>
+>>>>>>> Update
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/User.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="195" column="32" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
+=======
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+>>>>>>> Update
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#219#585#0" expanded="false" />
@@ -563,6 +678,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/User.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -593,10 +709,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Notifications.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+>>>>>>> Update
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Post.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -665,6 +788,29 @@
             <element signature="e#5835#6212#0" expanded="false" />
             <element signature="e#6217#6396#0" expanded="false" />
             <element signature="e#6399#6612#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/Notifications.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+            <element signature="e#46#228#0" expanded="false" />
+            <element signature="e#230#422#0" expanded="false" />
+            <element signature="e#424#503#0" expanded="false" />
+            <element signature="e#504#693#0" expanded="false" />
+            <element signature="e#694#775#0" expanded="false" />
+            <element signature="e#776#871#0" expanded="false" />
+            <element signature="e#872#951#0" expanded="false" />
+            <element signature="e#953#1572#0" expanded="false" />
+            <element signature="e#1573#1763#0" expanded="false" />
+            <element signature="e#1764#1955#0" expanded="false" />
+            <element signature="e#1957#2363#0" expanded="false" />
+            <element signature="e#2365#2831#0" expanded="false" />
+            <element signature="e#2833#3201#0" expanded="false" />
+            <element signature="e#3203#3270#0" expanded="false" />
+            <element signature="e#3271#3345#0" expanded="false" />
+>>>>>>> Update
           </folding>
         </state>
       </provider>
@@ -681,7 +827,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <element signature="e#43#2179#0" expanded="false" />
+            <element signature="e#2185#2360#0" expanded="false" />
+            <element signature="e#2366#3166#0" expanded="false" />
+            <element signature="e#6563#9174#0" expanded="false" />
+            <element signature="e#9176#14843#0" expanded="false" />
+            <element signature="e#14845#17311#0" expanded="false" />
+          </folding>
+>>>>>>> Update
         </state>
       </provider>
     </entry>
@@ -728,6 +885,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Photo.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -735,6 +893,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Update
     <entry file="file://$PROJECT_DIR$/System.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -753,6 +913,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/DateTime.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -765,6 +926,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Notifications.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3207547">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+            <element signature="e#46#228#0" expanded="false" />
+            <element signature="e#230#422#0" expanded="false" />
+            <element signature="e#424#503#0" expanded="false" />
+            <element signature="e#504#693#0" expanded="false" />
+            <element signature="e#694#775#0" expanded="false" />
+            <element signature="e#776#871#0" expanded="false" />
+            <element signature="e#872#951#0" expanded="false" />
+            <element signature="e#953#1572#0" expanded="false" />
+            <element signature="e#1573#1763#0" expanded="false" />
+            <element signature="e#1764#1955#0" expanded="false" />
+            <element signature="e#1957#2363#0" expanded="false" />
+            <element signature="e#2365#2831#0" expanded="false" />
+            <element signature="e#2833#3201#0" expanded="false" />
+            <element signature="e#3203#3270#0" expanded="false" />
+            <element signature="e#3271#3345#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DateTime.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+>>>>>>> Update
         </state>
       </provider>
     </entry>
@@ -795,7 +988,11 @@
     <entry file="file://$PROJECT_DIR$/User.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+=======
+          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+>>>>>>> Update
           <folding>
             <element signature="e#31#48#0" expanded="true" />
           </folding>
@@ -805,7 +1002,11 @@
     <entry file="file://$PROJECT_DIR$/System.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+>>>>>>> Update
           <folding />
         </state>
       </provider>
@@ -813,7 +1014,11 @@
     <entry file="file://$PROJECT_DIR$/User.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="209" column="5" selection-start-line="209" selection-start-column="5" selection-end-line="209" selection-end-column="5" />
+=======
+          <caret line="195" column="32" selection-start-line="195" selection-start-column="32" selection-end-line="195" selection-end-column="32" />
+>>>>>>> Update
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#219#585#0" expanded="false" />
@@ -864,13 +1069,38 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27226028">
           <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
+=======
+    <entry file="file://$PROJECT_DIR$/Notifications.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+>>>>>>> Update
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9536878">
+          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding>
+            <element signature="e#43#2179#0" expanded="false" />
+            <element signature="e#2185#2360#0" expanded="false" />
+            <element signature="e#2366#3166#0" expanded="false" />
+            <element signature="e#6563#9174#0" expanded="false" />
+            <element signature="e#9176#14843#0" expanded="false" />
+            <element signature="e#14845#17311#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Update
   </component>
 </project>
