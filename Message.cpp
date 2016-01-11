@@ -9,7 +9,11 @@ Message::Message(string text, string receiver, string sender) {
     this->receiver = receiver;
     this->sender = sender;
 
+<<<<<<< HEAD
     message = "\nFrom " + sender + "\n" + text + "\n" + dateTime.getDate() + " " + dateTime.getTime();
+=======
+    message = text + "\nFrom " + sender + "\nTo " + receiver + "\nAt " + dateTime.getDate() + " " + dateTime.getTime();
+>>>>>>> Project
 }
 
 
