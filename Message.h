@@ -3,27 +3,26 @@
 
 #include "DateTime.h"
 
+class User;
+
 class Message {
 private:
-    string text, receiver, sender;
+    string text;
+	User *sender;
     DateTime dateTime;
-    string message;
+
 public:
 
-    Message(string text, string receiver, string sender);
+    Message(string text, User *sender);
 
-    void view();
-
-    string getMessage();
-
-    string getSender();
-
-    string getReceiver();
-
+    User *getSender();
     string getText();
+	void setDate(DateTime);
 
-    friend ostream &operator<<(ostream &out, const Message &M);
+	string getMessage();
+	DateTime getDateTime();
 
+    friend ostream &operator<<(ostream &out, Message &M);
 };
 
 

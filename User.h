@@ -54,9 +54,9 @@ public:
     int getFriendsCount();
     User *getFriend(int index);
     int getReceivedMessagesCount();
-    Message getReceivedMessage(int index);
+    Message & getReceivedMessage(int index);
     int getSentMessagesCount();
-    Message getSentMessage(int index);
+    Message & getSentMessage(int index);
 
     ~User();
 };

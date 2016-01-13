@@ -2,56 +2,49 @@
 #define SOCIAL_DATETIME_H
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 class DateTime {
 private:
-    string dayName, dayNumber, month, year;
-    string second, minute, hour;
+	int day, month, year;
+	int second, minute, hour;
+	string dayName, monthName;
 
-    bool validDate(int day, int month, int year);
-    bool validDate(string &DDMMYY);
+	bool validDate(int day, int month, int year);
+	bool validDate(string &DDMMYY);
 
+	void setCurrent();
 public:
-    DateTime();
+	DateTime();
 
-    static string whatDay(int Y, int M, int D); // formula
+	static string whatDay(int Y, int M, int D); // formula
 
+	string timePassed();
 
-    void setCurrent();
+	string getDate(); // dayName DD/MM/YY
+	void setDate(int day, int month, int year);
+	void setDate(string DDMMYY); // DD/MM/YYYY format
 
-    string getDate()const; // dayName DD/MM/YY
-    void setDate(string dayNumber, string month, string year);
-    void setDate(string DDMMYY); // DD/MM/YYYY format
+	string getTime();
+	void setTime(int second, int minute, int hour);
 
-    string getTime();
-    void setTime(string second, string minute, string hour);
+	string getDayName();
+	void setDayName(string);
+	int getDayNumber();
+	void setDayNumber(int);
+	int getMonth();
+	void setMonth(int);
+	int getYear();
+	void setYear(int);
+	int getSecond();
+	void setSecond(int);
+	int getMinute();
+	void setMinute(int);
+	int getHour();
+	void setHour(int);
 
-    string getDayName();
-    void setDayName(string);
-
-    string getDayNumber();
-    void setDayNumber(string);
-
-    string getMonth();
-    void setMonth(string);
-
-    string getYear();
-    void setYear(string);
-
-    string getSecond();
-    void setSecond(string);
-
-    string getMinute();
-    void setMinute(string);
-
-    string getHour();
-    void setHour(string);
-
-    friend ostream& operator<< (ostream &out, const DateTime &date);
-
-    int calculateAge();
-
+	friend ostream &operator<<(ostream &out, const DateTime &date);
 };
 
 

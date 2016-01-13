@@ -217,13 +217,13 @@ string User::getName() {
 User *User::getFriend(int index) {
     return friends[index];
 }
-Message User::getReceivedMessage(int index) {
+Message &User::getReceivedMessage(int index) {
     if (!(0 <= index and index < receivedMessages.size()))
         throw "index out of boundary";
 
     return receivedMessages[index];
 }
-Message User::getSentMessage(int index) {
+Message &User::getSentMessage(int index) {
     if (!(0 <= index and index < sentMessages.size()))
         throw "index out of boundary";
 

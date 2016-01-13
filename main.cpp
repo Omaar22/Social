@@ -148,9 +148,8 @@ void sendMessage(User *aUser) {
     string text;
     while (text.size() == 0)
         getline(cin, text);
-    string sender = mySystem.getLoggedInUser()->getName();
-    string receiver = aUser->getName();
-    Message newMessage(text, receiver, sender);
+
+    Message newMessage(text,mySystem.getLoggedInUser());
 
     mySystem.getLoggedInUser()->sendMessage(aUser, newMessage);
 
@@ -350,11 +349,11 @@ void editYourProfile() {
 }
 
 void yourProfile() {
-    cout << "Name: " << mySystem.getLoggedInUser()->getName() << endl
-    << "Email: " << mySystem.getLoggedInUser()->getEmail() << endl
-    << "Gender: " << mySystem.getLoggedInUser()->getGender() << endl
-    << "Birth date: " << mySystem.getLoggedInUser()->getBirthDate() << " (" <<
-    mySystem.getLoggedInUser()->getBirthDate().calculateAge() << " Years old)\n";
+	cout << "Name: " << mySystem.getLoggedInUser()->getName() << endl
+	<< "Email: " << mySystem.getLoggedInUser()->getEmail() << endl
+	<< "Gender: " << mySystem.getLoggedInUser()->getGender() << endl
+	<< "Birth date: " << mySystem.getLoggedInUser()->getBirthDate() << " (" <<
+	mySystem.getLoggedInUser()->getBirthDate().timePassed() << " Years old)\n";
 
     while (true) {
         int friendRequestsCount = mySystem.getLoggedInUser()->getNotifications()->getFriendRequestsCount();
