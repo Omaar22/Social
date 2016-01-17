@@ -7,8 +7,8 @@
 class Post {
 
 protected:
-int likeCounter;
-int dislikeCounter;
+int numberOfLikers;
+int numberOfDislikers;
 int numberOfComments;
 string *comments;
 string *likers;
@@ -20,12 +20,13 @@ public:
 	Post();
 	void like (string);
 	void dislike (string);
-	void viewComments ();
-	void viewPostdetails();
+	string viewComment (int);
 	void addcomment (string);
 	void deleteComment(int);
-	void addthisString (int, string*&);
-	void removethisString (int,int, string*&);
+	int getNumberofComment ();
+	int getNumberofLikers ();
+	int getNumberofDislikers ();
+
 	void edit (); //not sure yet!
 	virtual void view () = 0;
 	virtual ~Post();

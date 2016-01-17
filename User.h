@@ -22,14 +22,14 @@ private:
     vector<Message> receivedMessages;
     vector<Message> sentMessages;
 
-    //    int postsCount;
-    //    Post **posts;
+    int numberOfPosts;
+    Post **posts;
 
     bool strongPassword(string password);
     bool validEmail(string email);
     bool validName(string name);
 
-//    void putInPosts(Post *P);
+
     void PushFriend(User *aUser); // send friend request => accept => add friend
     int findFriend (int);
 public:
@@ -44,8 +44,9 @@ public:
     void acceptFriend(User *aUser); // accept friend request from aUser
     void removeFriend(User *aUser); // reject friend request from aUser
 
-
-//    void addPost();
+    void addPost (Post*);
+    void removePost (int);
+    Post* getPost (int);
 
     void sendMessage(User *aUser, Message newMessage);
 
@@ -67,6 +68,7 @@ public:
     Message & getReceivedMessage(int index);
     int getSentMessagesCount();
     Message & getSentMessage(int index);
+    int getNumberOfPosts ();
 
     ~User();
 };

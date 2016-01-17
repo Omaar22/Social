@@ -34,6 +34,7 @@ void Status::addStatus(string text){
 }
 
 void Status::view (){
+	cout << "CheckPoint 3" << endl;
 	if (text.size())
 		cout << text << endl;
 	if (feeling.size())

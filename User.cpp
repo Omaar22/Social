@@ -2,11 +2,11 @@
 #include "System.h" // included in .cpp to avoid recursion
 
 User::User() {
-//    posts = NULL;
+    posts = NULL;
     friends = NULL;
     notifications = new Notifications;
     friendsCount = 0;
-//    postsCount = 0;
+    numberOfPosts = 0;
 }
 
 //friends functions
@@ -101,71 +101,29 @@ void User::removeFriend(User *aUser) {
 
 //posts
 
-//void User::addPost() {
-//    int choice;
-//    string s;
-//    cout << "1. Status\n2. Poll\n3. Photo/Video" << endl;
-//    cout << "\nEnter choice : ";
-//    cin >> choice;
-//
-//    while (choice < 0 || choice > 3) {
-//        cout << "Wrong Choise, TRY AGAIN : ";
-//        cin >> choice;
-//    }
-//
-//    if (choice == 1) {
-//        Status *st = new Status;
-//        cout << "Enter Status : ";
-//
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//
-//        st->addStatus(s);
-//        putInPosts(st);
-//    }
-//    else if (choice == 2) {
-//        Poll *pol = new Poll;
-//        int num;
-//        cout << "Enter Question : ";
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//
-//        cout << "Enter Number Of answers : ";
-//        cin >> num;
-//
-//        string ans;
-//        cout << "Enter The Answers : ";
-//
-//        pol->addQuestion(s);
-//
-//        for (int i = 0; i < num; i++) {
-//            ans = "";
-//            while (ans == "")
-//                getline(cin, ans);
-//            pol->addAnswers(ans);
-//        }
-//
-//        putInPosts(pol);
-//    }
-//    else {
-//        Photo *pv = new Photo;
-//        cout << "Enter Link : ";
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//        pv->addPhoto(s);
-//
-//        putInPosts(pv);
-//    }
-//}
-//void User::putInPosts(Post *P) {
-//    posts[postsCount++] = P;
-//
-//}
+void User::addPost(Post *newPost){
+
+	Post** TmpPosts = new Post* [numberOfPosts+1];
+
+	for (int i = 0; i < numberOfPosts; i++)
+		TmpPosts[i] = posts [i];
+
+	delete [] posts;
+
+	posts = TmpPosts;
+
+	posts [numberOfPosts] = newPost;
+
+	++numberOfPosts;
+
+}
+
 
 //setters and getters
+
+int User::getNumberOfPosts(){
+	return numberOfPosts;
+}
 
 void User::sendMessage(User *aUser, Message newMessage) {
     sentMessages.push_back(newMessage);
@@ -254,7 +212,9 @@ User* User::getFriend(int index) {
     return friends[index];
 }
 
-
+Post* User::getPost(int index){
+	return posts[index];
+}
 Message &User::getReceivedMessage(int index) {
     if (!(0 <= index and index < receivedMessages.size()))
         throw "index out of boundary";

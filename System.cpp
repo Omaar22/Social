@@ -111,8 +111,8 @@ void System::signUp(User *newUser) {
 
     users = newUsers;
 
-   users[usersCount++] = newUser;
-   newUser->setID(usersCount);
+    users[usersCount++] = newUser;
+    newUser->setID(usersCount);
 
     mergeSort(users, usersCount);
 
