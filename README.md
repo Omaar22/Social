@@ -3,20 +3,20 @@ A command line interface social application in C++ that connects people with oth
 
 it supports:
 
-*Messaging
+-Messaging
 
-*Posting status
+-Posting status
 
-*liking/disliking/commenting on posts
+-liking/disliking/commenting on posts
 
-*searching for friends
+-searching for friends
 
-*sending friend requests
+-sending friend requests
 
-*suggesting friends
+-suggesting friends
 
-*accepting/rejecting friend requests
+-accepting/rejecting friend requests
 
-*Notification for messages,friend requests and friends who accepted the friend request
+-Notification for messages,friend requests and friends who accepted the friend request
 
 
