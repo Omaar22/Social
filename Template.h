@@ -14,7 +14,7 @@ using namespace std;
 
 template <class T1>
 
-void add (int size, T1*& Tp){
+void addCell (int size, T1*& Tp){
 
 	T1 *tmp = new T1 [size+1];
 
@@ -28,7 +28,8 @@ void add (int size, T1*& Tp){
 }
 
 template <class T2>
-void remove (int size, int idx, T2 *& Tp){
+
+void removeCell (int size, int idx, T2 *& Tp){
 
 	T2 *tmp = new T2 [size-1];
 

@@ -10,36 +10,8 @@ Post::Post() {
 
 }
 
-void Post:: addthisString (int size, string *&p){
-
-	string *tmp = new string [size+1];
-
-	for (int i = 0; i < size; i++)
-		tmp [i] = p[i];
-
-	delete [] p;
-
-	p = tmp;
-
-}
-
-void Post:: removethisString (int size, int idx, string *&p){
-
-	string *tmp = new string [size-1];
-
-	int j = 0;
-	for (int i = 0; i < size; i++)
-		if (i != idx){
-			tmp [j] = p[i];
-			++j;
-		}
 
 
-	delete [] p;
-
-	p = tmp;
-
-}
 
 void Post::like(string curUser){
 
@@ -53,7 +25,7 @@ void Post::like(string curUser){
 
 	if (!exist){
 
-		addthisString (likeCounter, *&likers);
+		addCell (likeCounter, *&likers);
 
 		likers [likeCounter] = curUser;
 
@@ -70,7 +42,7 @@ void Post::like(string curUser){
 		}
 
 	if (exist){
-		removethisString (dislikeCounter, idx,*&dislikers );
+		removeCell (dislikeCounter, idx,*&dislikers );
 		--dislikeCounter;
 	}
 
@@ -89,7 +61,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (!exist){
-		addthisString (dislikeCounter, *&dislikers);
+		addCell (dislikeCounter, *&dislikers);
 		dislikers[dislikeCounter] = curUser;
 		++dislikeCounter;
 	}
@@ -104,7 +76,7 @@ void Post::dislike(string curUser){
 		}
 
 	if (exist){
-		removethisString (likeCounter, idx, *&likers);
+		removeCell (likeCounter, idx, *&likers);
 		--likeCounter;
 	}
 
@@ -114,15 +86,15 @@ void Post::addcomment(string Comment){
 
 	Comment += '\n';
 	Comment += dateandtime.getDate();
-	addthisString (numberOfComments, *&comments);
+	addCell (numberOfComments, *&comments);
 	comments [numberOfComments] = Comment;
 	++numberOfComments;
 
 }
-
+//no couts!
 void Post::deleteComment (int idx){
 	cout << numberOfComments << ' ' << idx <<  endl;
-	removethisString (numberOfComments, idx, *&comments);
+	removeCell (numberOfComments, idx, *&comments);
 	--numberOfComments;
 
 }
@@ -147,13 +119,3 @@ Post::~Post() {
 
 }
 
-
-
-/*
- * problems
- *
- * -view must be a pure virtual function and I can't deal with them yet using base class.
- * -remove post should be done in user I think!
- * -edit same as remove
- * -remove and edit should delete current object and add new object
- */

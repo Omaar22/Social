@@ -50,8 +50,8 @@ void Poll:: removethisInt (int size, int idx, int *&p){
 
 void Poll::addAnswers(string Answer){
 
-	addthisString(numberOfAnswers, *&answers);
-	addthisInt (numberOfAnswers, *&votes);
+	addCell(numberOfAnswers, *&answers);
+	addCell (numberOfAnswers, *&votes);
 	votes[numberOfAnswers] = 0;
 	answers[numberOfAnswers] = Answer;
 	++numberOfAnswers;
@@ -70,7 +70,7 @@ void Poll::downVote(string curUser, int idx){
 }
 
 void Poll::removeAnswers(int idx){
-	removethisString (numberOfAnswers, idx, *&answers);
+	removeCell (numberOfAnswers, idx, *&answers);
 
 	removethisInt (numberOfAnswers, idx, *&votes);
 	--numberOfAnswers;

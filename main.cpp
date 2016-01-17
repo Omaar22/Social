@@ -349,15 +349,19 @@ void editYourProfile() {
 }
 
 void yourProfile() {
+	//basic info
 	cout << "Name: " << mySystem.getLoggedInUser()->getName() << endl
 	<< "Email: " << mySystem.getLoggedInUser()->getEmail() << endl
 	<< "Gender: " << mySystem.getLoggedInUser()->getGender() << endl
 	<< "Birth date: " << mySystem.getLoggedInUser()->getBirthDate() << " (" <<
-	mySystem.getLoggedInUser()->getBirthDate().timePassed() << " Years old)\n";
+	mySystem.getLoggedInUser()->getBirthDate().timePassed() << " old)\n" << endl;
+	//something is wrong with output in brith date!
+
 
     while (true) {
         int friendRequestsCount = mySystem.getLoggedInUser()->getNotifications()->getFriendRequestsCount();
         bool hasFriendRequest = false;
+
         if (friendRequestsCount != 0) {
             cout << "(" << friendRequestsCount << ") friend requests.\n";
             hasFriendRequest = true;
@@ -375,9 +379,10 @@ void yourProfile() {
             cout << indexCounter++ << ".View friend requests\n";
         if (hasAcceptedRequests)
             cout << indexCounter++ << ".View accepted friends\n";
-        cout << indexCounter++ << ".Edit your profile\n";
-        cout << indexCounter++ << ".Your friends\n";
-        cout << indexCounter++ << ".back\n";
+        cout << indexCounter++ << ".Edit your profile\n"; //1
+        cout << indexCounter++ << ".Your friends\n"; //2
+        cout << indexCounter++ << ".Suggested friends\n"; //3
+        cout << indexCounter++ << ".back\n"; //4
 
 
         int choice;
@@ -424,7 +429,7 @@ void yourProfile() {
                 }
             }
         }
-        else if (choice == 1 && hasAcceptedRequests || choice == 2 && hasAcceptedRequests) {
+        else if ((choice == 1 && hasAcceptedRequests) || (choice == 2 && hasAcceptedRequests)) {
             for (int i = 0; i < mySystem.getLoggedInUser()->getNotifications()->getAcceptedRequestCount(); i++) {
                 cout << mySystem.getLoggedInUser()->getNotifications()->getAcceptedRequest(i)->getName() << endl;
                 cout << "1.View profile\n2.Continue\n3.Back\n";
@@ -446,10 +451,10 @@ void yourProfile() {
                 }
             }
         }
-        else if (choice == indexCounter - 3) {
+        else if (choice == indexCounter - 4) {
             editYourProfile();
         }
-        else if (choice == indexCounter - 2) {
+        else if (choice == indexCounter - 3) {
             if (mySystem.getLoggedInUser()->getFriendsCount() == 0) {
                 cout << "You have no friends.\n";
                 break;
@@ -474,6 +479,48 @@ void yourProfile() {
                 }
             }
         }
+
+        else if (choice == indexCounter - 2){
+
+        	vector <int> suggested =  mySystem.suggestedFriends(mySystem.getLoggedInUser());
+        	vector <int> toBeviewed;
+        	bool vis [(int)suggested.size()];
+        	memset (vis, 0, sizeof vis);
+        	int i = 0;
+
+        	while (i < (int)suggested.size() && i < 5){
+
+        		int index = rand () % suggested.size();
+        		if (!vis [index++]){
+        			toBeviewed.push_back (suggested[i]);
+        			++i;
+        		}
+        	}
+
+
+			for (i = 0; i < (int)toBeviewed.size(); i++){
+
+				string name =mySystem.getUser(toBeviewed [i])->getName();
+				cout << name << '\n';
+				cout << i+1 << ". view " << name<< "'s profile\n\n";
+
+			}
+			while (true){
+				cout << toBeviewed.size() + 1 << ". Back\n";
+
+				cin >> choice;
+
+				if (choice < 1 || choice > (int)toBeviewed.size() + 1){
+					cout << "Invalid Choice\n";
+				}
+				else if (choice == (int)toBeviewed.size() + 1){
+					break;
+				}
+				else userProfile(mySystem.getUser(suggested[choice-1]));
+
+				}
+        }
+
         else if (choice == indexCounter - 1) {
             break;
         }

@@ -8,40 +8,46 @@ string DateTime::timePassed() {
 
 	DateTime now;
 
+	stringstream ss;
+	string convertedInt;
 
 	if (now.year - year){
 		ss << (now.year - year);
-		ss >> convertedString;
+		ss >> convertedInt;
 		ss.clear();
-		return convertedString + " years";
+		return convertedInt + " years";
 	}
 	if (now.month - month){
 		ss << (now.month - month);
-		ss >> convertedString;
+		ss >> convertedInt;
 		ss.clear();
-		return convertedString + " months";
+		return convertedInt + " months";
 	}
 	if (now.day - day){
 		ss << (now.day - day);
-		ss >> convertedString;
+		ss >> convertedInt;
 		ss.clear();
-		return convertedString + " days";
+		return convertedInt + " days";
 	}
 	if (now.hour - hour){
 		ss << (now.hour - hour);
-		ss >> convertedString;
+		ss >> convertedInt;
 		ss.clear();
-		return convertedString + " hours";
+		return convertedInt + " hours";
 	}
 
 	ss << (now.minute - minute);
-	ss >> convertedString;
-	return convertedString + " minutes";
+	ss >> convertedInt;
+	ss.clear();
+	return	convertedInt + " minutes";
 
 }
 
 bool  DateTime::validDate(string &DDMMYY) {
 
+	stringstream ss;
+		string convertedInt;
+		int convertedString;
 
 	if (DDMMYY[1] == '/')
 		DDMMYY.insert(0, "0");
@@ -81,6 +87,7 @@ bool  DateTime::validDate(string &DDMMYY) {
 	if (isdigit(DDMMYY[6]) && isdigit(DDMMYY[7]) && isdigit(DDMMYY[8]) && isdigit(DDMMYY[9])){
 		ss << DDMMYY.substr(6, 4);
 		ss >> convertedString;
+		ss.clear();
 		year = convertedString;
 	}
 	else
@@ -146,6 +153,8 @@ void DateTime::setCurrent() {
 	time_t now = time(NULL);
 	string dateTime = ctime(&now);
 
+	stringstream ss;
+	int convertedString;
 
 	for (int i = 0, counter = 0, n = dateTime.size() ; i < n ; i++, counter++) {
 		string tmp;
@@ -205,6 +214,9 @@ void DateTime::setDate(int day, int month, int year) {
 }
 void DateTime::setDate(string DDMMYY) {
 
+	stringstream ss;
+		string convertedInt;
+		int convertedString;
 
 
 	if (validDate(DDMMYY)) {
@@ -254,6 +266,10 @@ void DateTime::setHour(int hour) {
 
 string DateTime::getDate() {
 
+	stringstream ss;
+	string convertedInt;
+
+
 	string date;
 
 	date = dayName + " " ;
@@ -294,6 +310,8 @@ int DateTime::getYear() {
 }
 string DateTime::getTime() {
 
+	stringstream ss;
+	string convertedInt;
 	string time;
 
 	ss << hour;

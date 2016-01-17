@@ -2,6 +2,7 @@
 #define POST_H_
 
 #include "DateTime.h"
+#include "Template.h"
 
 class Post {
 

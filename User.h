@@ -10,25 +10,32 @@
 class System;
 
 class User {
+
 private:
+
+	int ID;
     Notifications *notifications;
     string name, password, gender, email;
     DateTime birthDate;
     int friendsCount;
     User **friends;
-//    int postsCount;
-//    Post **posts;
     vector<Message> receivedMessages;
     vector<Message> sentMessages;
+
+    //    int postsCount;
+    //    Post **posts;
 
     bool strongPassword(string password);
     bool validEmail(string email);
     bool validName(string name);
 
 //    void putInPosts(Post *P);
-    void addFriend(User *aUser); // send friend request => accept => add friend
+    void PushFriend(User *aUser); // send friend request => accept => add friend
+    int findFriend (int);
 public:
+
     User();
+
     Notifications *getNotifications();
 
     int findFriend(string email); // return index or -1 if not found
@@ -37,10 +44,13 @@ public:
     void acceptFriend(User *aUser); // accept friend request from aUser
     void removeFriend(User *aUser); // reject friend request from aUser
 
+
 //    void addPost();
 
     void sendMessage(User *aUser, Message newMessage);
 
+    int getID ();
+    void setID (int);
     void setName(string name);
     string getName();
     void setPassword(string password);
@@ -52,7 +62,7 @@ public:
     void setBirthDate(DateTime birthDate);
     DateTime getBirthDate();
     int getFriendsCount();
-    User *getFriend(int index);
+    User* getFriend(int index);
     int getReceivedMessagesCount();
     Message & getReceivedMessage(int index);
     int getSentMessagesCount();
