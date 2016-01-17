@@ -234,8 +234,8 @@ Notifications *User::getNotifications() {
 }
 
 bool User::validName(string name) {
-    for (char X : name)
-        if (!('a' <= X && X <= 'z' || 'A' <= X && X <= 'Z' || X == ' '))
+    for (int i = 0, n = name.size(); i < n; i++)
+        if ((!('a' <= name[i] &&  name[i] <= 'z') || ('A' <=  name[i] &&  name[i] <= 'Z') || name[i] == ' '))
             return false;
 
     return name.size() != 0;
