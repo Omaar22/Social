@@ -167,33 +167,30 @@ void viewPosts (){
 	else {
 		for (int i = 0; i < numberOfPosts; ){
 
-		mySystem.getLoggedInUser()->getPost(i)->view();
+		Post* post = mySystem.getLoggedInUser()->getPost(i);
+		post->view();
 
-		cout << "Check point 2" << endl;
 		cout << '\n';
 
 		int choice;
 
 		while (true){
 
-			cout << mySystem.getLoggedInUser()->getPost(i)->getNumberofLikers() << " Like  "<<
-					mySystem.getLoggedInUser()->getPost(i)->getNumberofDislikers() << " Dislike  " <<
-					mySystem.getLoggedInUser()->getPost(i)->getNumberofComment() << " Comment  \n";
+			cout << post->getNumberofLikers() << " Like  "<<
+					post->getNumberofDislikers() << " Dislike  " <<
+					post->getNumberofComment() << " Comment  \n";
 
 
 
-			for (int j = 0; j < mySystem.getLoggedInUser()->getPost(i)->getNumberofComment(); j++){
+			for (int j = 0; j < post->getNumberofComment(); j++){
 
+				post->viewComment(j);
 
-				mySystem.getLoggedInUser()->getPost(i)->viewComment(j);
-					if (i == 4){
-						cout << "1. Continue\n2. Else\n";
-						cin >> choice;
-						if (choice == 1)
-							continue;
-						else break;
-					}
-
+				cout << "1.Continue\n2.Break\n";
+				cin >> choice;
+				if (choice == 1)
+					continue;
+				else break;
 
 			}
 
@@ -225,8 +222,8 @@ void viewPosts (){
 
 		}
 
-		while (true && i < numberOfPosts){
-				cout << "1. Continue\n2.Break\n";
+			if( i + 1 < numberOfPosts){
+				cout << "1.Continue showing posts\n2.Break\n";
 				cin >> choice;
 				if (choice  < 1 || choice > 2)
 					cout << "Invalid Option\n";
@@ -234,6 +231,7 @@ void viewPosts (){
 					i++;
 				else break;
 			}
+			else break;
 	}
 
 
@@ -544,17 +542,16 @@ void yourProfile() {
 
         else if (choice == indexCounter - 6){
 
-        	Status newStatus;
+        	Status* newStatus = new Status ;
 
         	string status;
         	cout << "Enter your Status\n";
         	cin.ignore();
         	getline (cin, status);
 
-        	newStatus.addStatus(status);
-        	Post *p = &newStatus;
-        	mySystem.getLoggedInUser()->addPost(&newStatus);
+        	newStatus->addStatus(status);
 
+        	mySystem.getLoggedInUser()->addPost(newStatus);
 
         }
 
