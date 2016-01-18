@@ -2,6 +2,7 @@
 #define System_H
 
 #include "User.h"
+#include "Template.h"
 
 class System {
 private:
@@ -14,7 +15,7 @@ public:
     System(); // get data from file
 
     int findUser(string email); // binary search return index or -1 if not found
-
+    vector <int> suggestedFriends (User *);
     User *getLoggedInUser();
     User *getUser(int index);
 

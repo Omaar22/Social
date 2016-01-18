@@ -56,6 +56,46 @@ int System::findUser(string email) {
     return -1;
 }
 
+vector <int> System:: suggestedFriends(User *rootUser){
+
+	vector <int> suggested;
+
+	int visited [usersCount];
+	memset (visited, 0, sizeof visited);
+
+	queue < User* > Q;
+
+	Q.push (rootUser);
+
+	visited [rootUser->getID()] = 1;
+
+	while (!Q.empty()){
+
+		User* p = Q.front();
+		Q.pop();
+
+		for (int i = 0; i < p->getFriendsCount(); i++){
+			User *person = p->getFriend(i);
+			if (!visited [person->getID()]){
+
+				visited [person->getID()] = visited [p->getID()] + 1;
+
+				if (visited [person->getID()] == 3)
+					suggested.push_back (findUser(person->getEmail()));
+
+				if (visited [person->getID()] == 2)
+					Q.push(person);
+
+			}
+		}
+
+
+	}
+
+	return suggested;
+
+}
+
 int System::getUsersCount() {
     return usersCount;
 }
@@ -66,12 +106,18 @@ void System::signUp(User *newUser) {
 
     for (int i = 0; i < usersCount; i++)
         newUsers[i] = users[i];
+
     delete[] users;
+
     users = newUsers;
 
     users[usersCount++] = newUser;
+    newUser->setID(usersCount);
+
     mergeSort(users, usersCount);
+
 }
+
 bool System::signIn(string email, string password) {
     int index = findUser(email);
 

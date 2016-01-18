@@ -8,19 +8,46 @@ string DateTime::timePassed() {
 
 	DateTime now;
 
-	if (now.year - year)
-		return to_string(now.year - year) + " years";
-	if (now.month - month)
-		return to_string(now.month - month) + " months";
-	if (now.day - day)
-		return to_string(now.day - day) + " days";
-	if (now.hour - hour)
-		return to_string(now.hour - hour) + " hours";
+	stringstream ss;
+	string convertedInt;
 
-	return to_string(now.minute - minute) + " minutes";
+	if (now.year - year){
+		ss << (now.year - year);
+		ss >> convertedInt;
+		ss.clear();
+		return convertedInt + " years";
+	}
+	if (now.month - month){
+		ss << (now.month - month);
+		ss >> convertedInt;
+		ss.clear();
+		return convertedInt + " months";
+	}
+	if (now.day - day){
+		ss << (now.day - day);
+		ss >> convertedInt;
+		ss.clear();
+		return convertedInt + " days";
+	}
+	if (now.hour - hour){
+		ss << (now.hour - hour);
+		ss >> convertedInt;
+		ss.clear();
+		return convertedInt + " hours";
+	}
+
+	ss << (now.minute - minute);
+	ss >> convertedInt;
+	ss.clear();
+	return	convertedInt + " minutes";
+
 }
 
 bool  DateTime::validDate(string &DDMMYY) {
+
+	stringstream ss;
+		string convertedInt;
+		int convertedString;
 
 	if (DDMMYY[1] == '/')
 		DDMMYY.insert(0, "0");
@@ -35,7 +62,10 @@ bool  DateTime::validDate(string &DDMMYY) {
 		string DD;
 		DD += DDMMYY[0];
 		DD += DDMMYY[1];
-		day = stoi(DD);
+		ss << DD;
+		ss >> convertedString;
+		ss.clear();
+		day = convertedString;
 	}
 	else
 		return false;
@@ -45,27 +75,35 @@ bool  DateTime::validDate(string &DDMMYY) {
 		string MM;
 		MM += DDMMYY[3];
 		MM += DDMMYY[4];
-
-		month = stoi(MM);
+		ss << MM;
+		ss >> convertedString;
+		ss.clear();
+		month = convertedString;
 	}
 	else
 		return false;
 
 	int year;
-	if (isdigit(DDMMYY[6]) && isdigit(DDMMYY[7]) && isdigit(DDMMYY[8]) && isdigit(DDMMYY[9]))
-		year = stoi(DDMMYY.substr(6, 4));
+	if (isdigit(DDMMYY[6]) && isdigit(DDMMYY[7]) && isdigit(DDMMYY[8]) && isdigit(DDMMYY[9])){
+		ss << DDMMYY.substr(6, 4);
+		ss >> convertedString;
+		ss.clear();
+		year = convertedString;
+	}
 	else
 		return false;
 
 	return validDate(day, month, year);
 }
+
+
 bool DateTime::validDate(int day, int month, int year) {
 	int daysInMonths[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	if (year < 1850 || year > 2100)
 		return false;
 
-	if (year % 4 == 0 && year % 100 || year % 400 == 0)
+	if ((year % 4 == 0 && year % 100) || year % 400 == 0)
 		daysInMonths[1] = 29;  // Feb has 29 days in leap year
 
 	if (month < 1 || month > 12)
@@ -115,7 +153,10 @@ void DateTime::setCurrent() {
 	time_t now = time(NULL);
 	string dateTime = ctime(&now);
 
-	for (int i = 0, counter = 0; i < dateTime.size(); i++, counter++) {
+	stringstream ss;
+	int convertedString;
+
+	for (int i = 0, counter = 0, n = dateTime.size() ; i < n ; i++, counter++) {
 		string tmp;
 		while (dateTime[i] != ' ' && dateTime[i] != '\n' && dateTime[i] != ':') {
 			tmp += dateTime[i];
@@ -131,16 +172,36 @@ void DateTime::setCurrent() {
 					month = j + 1;
 			}
 		}
-		else if (counter == 2)
-			day = stoi(tmp);
-		else if (counter == 3)
-			hour = stoi(tmp);
-		else if (counter == 4)
-			minute = stoi(tmp);
-		else if (counter == 5)
-			second = stoi(tmp);
-		else
-			year = stoi(tmp);
+		else if (counter == 2){
+			ss << tmp;
+			ss >> convertedString;
+			ss.clear();
+			day = convertedString;
+		}
+		else if (counter == 3){
+			ss << tmp;
+			ss >> convertedString;
+			ss.clear();
+			hour = convertedString;
+		}
+		else if (counter == 4){
+			ss << tmp;
+			ss >> convertedString;
+			ss.clear();
+			minute = convertedString;
+		}
+		else if (counter == 5){
+			ss << tmp;
+			ss >> convertedString;
+			ss.clear();
+			second = convertedString;
+		}
+		else{
+			ss << tmp;
+			ss >> convertedString;
+			ss.clear();
+			year = convertedString;
+		}
 	}
 
 }
@@ -152,10 +213,25 @@ void DateTime::setDate(int day, int month, int year) {
 	dayName = whatDay(day, month, year);
 }
 void DateTime::setDate(string DDMMYY) {
+
+	stringstream ss;
+		string convertedInt;
+		int convertedString;
+
+
 	if (validDate(DDMMYY)) {
-		day = stoi(DDMMYY.substr(0, 2));
-		month = stoi(DDMMYY.substr(3, 2));
-		year = stoi(DDMMYY.substr(6, 4));
+		ss << DDMMYY.substr(0, 2);
+		ss >> convertedString;
+		ss.clear();
+		day = convertedString;
+		ss << DDMMYY.substr(3, 2);
+		ss >> convertedString;
+		ss.clear();
+		month = convertedString;
+		ss << DDMMYY.substr(6, 4);
+		ss >> convertedString;
+		ss.clear();
+		year = convertedString;
 		dayName = whatDay(day, month, year);
 	}
 	else
@@ -189,8 +265,37 @@ void DateTime::setHour(int hour) {
 }
 
 string DateTime::getDate() {
-	return dayName + " " + to_string(day) + "/" + to_string(month) + "/" + to_string(year);
+
+	stringstream ss;
+	string convertedInt;
+
+
+	string date;
+
+	date = dayName + " " ;
+	ss << day;
+	ss >> convertedInt;
+	ss.clear ();
+
+	date+=convertedInt;
+	date += "/";
+
+	ss << month;
+	ss >> convertedInt;
+	ss.clear ();
+
+	date += convertedInt;
+	date += "/";
+
+	ss << year;
+	ss >> convertedInt;
+	ss.clear ();
+
+	date+= convertedInt;
+
+	return date;
 }
+
 string DateTime::getDayName() {
 	return dayName;
 }
@@ -204,8 +309,33 @@ int DateTime::getYear() {
 	return year;
 }
 string DateTime::getTime() {
-	return to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
+
+	stringstream ss;
+	string convertedInt;
+	string time;
+
+	ss << hour;
+	ss >> convertedInt;
+	ss.clear();
+
+	time = convertedInt + ":";
+
+	ss << minute;
+	ss >> convertedInt;
+	ss.clear();
+
+	time+= convertedInt;
+	time+= ":";
+
+	ss << second;
+	ss >> convertedInt;
+	ss.clear();
+
+	time+= convertedInt;
+
+	return time;
 }
+
 int DateTime::getSecond() {
 	return second;
 }

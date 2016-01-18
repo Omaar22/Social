@@ -156,13 +156,97 @@ void sendMessage(User *aUser) {
     cout << "Message sent.\n\n";
 }
 
+void viewPosts (){
+
+	int numberOfPosts = mySystem.getLoggedInUser()->getNumberOfPosts();
+
+	if (numberOfPosts == 0){
+		cout << "No posts yet!\n";
+	}
+
+	else {
+		for (int i = 0; i < numberOfPosts; ){
+
+		mySystem.getLoggedInUser()->getPost(i)->view();
+
+		cout << "Check point 2" << endl;
+		cout << '\n';
+
+		int choice;
+
+		while (true){
+
+			cout << mySystem.getLoggedInUser()->getPost(i)->getNumberofLikers() << " Like  "<<
+					mySystem.getLoggedInUser()->getPost(i)->getNumberofDislikers() << " Dislike  " <<
+					mySystem.getLoggedInUser()->getPost(i)->getNumberofComment() << " Comment  \n";
+
+
+
+			for (int j = 0; j < mySystem.getLoggedInUser()->getPost(i)->getNumberofComment(); j++){
+
+
+				mySystem.getLoggedInUser()->getPost(i)->viewComment(j);
+					if (i == 4){
+						cout << "1. Continue\n2. Else\n";
+						cin >> choice;
+						if (choice == 1)
+							continue;
+						else break;
+					}
+
+
+			}
+
+			while (true){
+
+				cout << "1. Like\n" << "2. Dislike\n"
+						<< "3. Comment\n" << "4. Continue\n";
+
+				cin >> choice;
+
+				if (choice < 1 || choice > 4)
+					cout << "Invalid choice\n";
+				else if (choice == 4)
+					break;
+				else if (choice == 1)
+					mySystem.getLoggedInUser()->getPost(i)->like(mySystem.getLoggedInUser()->getEmail());
+				else if (choice == 2)
+					mySystem.getLoggedInUser()->getPost(i)->dislike(mySystem.getLoggedInUser()->getEmail());
+				else if (choice == 3){
+					string comment;
+					cin.ignore();
+					getline (cin, comment);
+					mySystem.getLoggedInUser()->getPost(i)->addcomment(comment);
+				}
+
+			}
+			if (choice == 4)
+				break;
+
+		}
+
+		while (true && i < numberOfPosts){
+				cout << "1. Continue\n2.Break\n";
+				cin >> choice;
+				if (choice  < 1 || choice > 2)
+					cout << "Invalid Option\n";
+				else if (choice == 1)
+					i++;
+				else break;
+			}
+	}
+
+
+	}
+}
+
 void userProfile(User *aUser) {
     while (true) {
         bool isFriend =
                 mySystem.getLoggedInUser()->findFriend(aUser->getEmail()) != -1;
 
         if (isFriend) {
-            cout << "1.View " << aUser->getName() << "'s information\n2.Send Message\n3.Remove " << aUser->getName() <<
+            cout << "1.View " << aUser->getName() << "'s information\n2.Send Message\n3.View Posts\n4.Remove " << aUser->getName() <<
             " from friends\n4.back\n";
             int choice;
             cin >> choice;
@@ -174,13 +258,15 @@ void userProfile(User *aUser) {
             else if (choice == 2) {
                 sendMessage(aUser);
             }
-            else if (choice == 3) {
+            else if (choice == 3)
+            	viewPosts();
+            else if (choice == 4) {
                 try {
                     mySystem.getLoggedInUser()->removeFriend(aUser);
                     aUser->removeFriend(mySystem.getLoggedInUser());
                     cout << aUser->getName() << " removed successfully.\n";
                 }
-                catch (string error) {
+                catch (char* error[]) {
                     cout << error << endl;
                     userProfile(aUser);
                 }
@@ -239,6 +325,8 @@ void userProfile(User *aUser) {
             }
         }
     }
+
+
 }
 
 void editYourProfile() {
@@ -349,15 +437,19 @@ void editYourProfile() {
 }
 
 void yourProfile() {
+	//basic info
 	cout << "Name: " << mySystem.getLoggedInUser()->getName() << endl
 	<< "Email: " << mySystem.getLoggedInUser()->getEmail() << endl
 	<< "Gender: " << mySystem.getLoggedInUser()->getGender() << endl
 	<< "Birth date: " << mySystem.getLoggedInUser()->getBirthDate() << " (" <<
-	mySystem.getLoggedInUser()->getBirthDate().timePassed() << " Years old)\n";
+	mySystem.getLoggedInUser()->getBirthDate().timePassed() << " old)\n" << endl;
+	//something is wrong with output in brith date!
+
 
     while (true) {
         int friendRequestsCount = mySystem.getLoggedInUser()->getNotifications()->getFriendRequestsCount();
         bool hasFriendRequest = false;
+
         if (friendRequestsCount != 0) {
             cout << "(" << friendRequestsCount << ") friend requests.\n";
             hasFriendRequest = true;
@@ -375,8 +467,11 @@ void yourProfile() {
             cout << indexCounter++ << ".View friend requests\n";
         if (hasAcceptedRequests)
             cout << indexCounter++ << ".View accepted friends\n";
+        cout << indexCounter++ << ".Add status\n";
         cout << indexCounter++ << ".Edit your profile\n";
         cout << indexCounter++ << ".Your friends\n";
+        cout << indexCounter++ << ".View Posts\n";
+        cout << indexCounter++ << ".Suggested friends\n";
         cout << indexCounter++ << ".back\n";
 
 
@@ -424,7 +519,7 @@ void yourProfile() {
                 }
             }
         }
-        else if (choice == 1 && hasAcceptedRequests || choice == 2 && hasAcceptedRequests) {
+        else if ((choice == 1 && hasAcceptedRequests) || (choice == 2 && hasAcceptedRequests)) {
             for (int i = 0; i < mySystem.getLoggedInUser()->getNotifications()->getAcceptedRequestCount(); i++) {
                 cout << mySystem.getLoggedInUser()->getNotifications()->getAcceptedRequest(i)->getName() << endl;
                 cout << "1.View profile\n2.Continue\n3.Back\n";
@@ -446,10 +541,27 @@ void yourProfile() {
                 }
             }
         }
-        else if (choice == indexCounter - 3) {
+
+        else if (choice == indexCounter - 6){
+
+        	Status newStatus;
+
+        	string status;
+        	cout << "Enter your Status\n";
+        	cin.ignore();
+        	getline (cin, status);
+
+        	newStatus.addStatus(status);
+        	Post *p = &newStatus;
+        	mySystem.getLoggedInUser()->addPost(&newStatus);
+
+
+        }
+
+        else if (choice == indexCounter - 5) {
             editYourProfile();
         }
-        else if (choice == indexCounter - 2) {
+        else if (choice == indexCounter - 4) {
             if (mySystem.getLoggedInUser()->getFriendsCount() == 0) {
                 cout << "You have no friends.\n";
                 break;
@@ -474,6 +586,52 @@ void yourProfile() {
                 }
             }
         }
+
+        else if (choice == indexCounter -3){
+        	viewPosts();
+        }
+
+        else if (choice == indexCounter - 2){
+
+        	vector <int> suggested =  mySystem.suggestedFriends(mySystem.getLoggedInUser());
+        	vector <int> toBeviewed;
+        	bool vis [(int)suggested.size()];
+        	memset (vis, 0, sizeof vis);
+        	int i = 0;
+
+        	while (i < (int)suggested.size() && i < 5){
+
+        		int index = rand () % suggested.size();
+        		if (!vis [index++]){
+        			toBeviewed.push_back (suggested[i]);
+        			++i;
+        		}
+        	}
+
+
+			for (i = 0; i < (int)toBeviewed.size(); i++){
+
+				string name =mySystem.getUser(toBeviewed [i])->getName();
+				cout << name << '\n';
+				cout << i+1 << ". view " << name<< "'s profile\n\n";
+
+			}
+			while (true){
+				cout << toBeviewed.size() + 1 << ". Back\n";
+
+				cin >> choice;
+
+				if (choice < 1 || choice > (int)toBeviewed.size() + 1){
+					cout << "Invalid Choice\n";
+				}
+				else if (choice == (int)toBeviewed.size() + 1){
+					break;
+				}
+				else userProfile(mySystem.getUser(suggested[choice-1]));
+
+				}
+        }
+
         else if (choice == indexCounter - 1) {
             break;
         }
@@ -483,6 +641,8 @@ void yourProfile() {
     }
 
     cout << endl;
+
+
 }
 
 void loggedInPage() {
@@ -570,3 +730,5 @@ int main() {
     }
 
 }
+
+

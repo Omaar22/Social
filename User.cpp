@@ -2,12 +2,14 @@
 #include "System.h" // included in .cpp to avoid recursion
 
 User::User() {
-//    posts = NULL;
+    posts = NULL;
     friends = NULL;
     notifications = new Notifications;
     friendsCount = 0;
-//    postsCount = 0;
+    numberOfPosts = 0;
 }
+
+//friends functions
 
 int User::findFriend(string email) {
     int lower = 0, upper = friendsCount - 1;
@@ -35,7 +37,9 @@ void User::sendFriendRequest(User *aUser) {
 
     aUser->getNotifications()->receiveFriendRequest(this);
 }
+
 void User::acceptFriend(User *aUser) {
+
     int index = notifications->findFriendRequest(aUser->getEmail());
     if (index == -1)
         throw "No friend request from this User.";
@@ -44,19 +48,21 @@ void User::acceptFriend(User *aUser) {
 
     aUser->notifications->receiveAcceptedFriend(this);
 
-    addFriend(aUser);
-    aUser->addFriend(this);
+    PushFriend(aUser);
+    aUser->PushFriend(this);
 }
-void User::addFriend(User *aUser) {
+
+void User::PushFriend(User *aUser) {
+
     User **tmpFriends = new User *[friendsCount + 1];
 
-    bool added = false;
+    bool pushed = false;
     for (int i = 0; i <= friendsCount; i++) {
-        if (!added && (i == friendsCount || friends[i]->email > aUser->email)) {
+        if (!pushed && (i == friendsCount || friends[i]->email > aUser->email)) {
             tmpFriends[i] = aUser;
-            added = true;
+            pushed = true;
         }
-        if (!added)
+        if (!pushed)
             tmpFriends[i] = friends[i];
         else if (i != friendsCount)
             tmpFriends[i + 1] = friends[i];
@@ -66,8 +72,11 @@ void User::addFriend(User *aUser) {
     friends = tmpFriends;
 
     friendsCount++;
+
 }
+
 void User::removeFriend(User *aUser) {
+
     int index = findFriend(aUser->email);
 
     if (index == -1)
@@ -86,71 +95,36 @@ void User::removeFriend(User *aUser) {
     delete[] friends;
     friends = tmpFriends;
     friendsCount--;
+
 }
 
-//void User::addPost() {
-//    int choice;
-//    string s;
-//    cout << "1. Status\n2. Poll\n3. Photo/Video" << endl;
-//    cout << "\nEnter choice : ";
-//    cin >> choice;
-//
-//    while (choice < 0 || choice > 3) {
-//        cout << "Wrong Choise, TRY AGAIN : ";
-//        cin >> choice;
-//    }
-//
-//    if (choice == 1) {
-//        Status *st = new Status;
-//        cout << "Enter Status : ";
-//
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//
-//        st->addStatus(s);
-//        putInPosts(st);
-//    }
-//    else if (choice == 2) {
-//        Poll *pol = new Poll;
-//        int num;
-//        cout << "Enter Question : ";
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//
-//        cout << "Enter Number Of answers : ";
-//        cin >> num;
-//
-//        string ans;
-//        cout << "Enter The Answers : ";
-//
-//        pol->addQuestion(s);
-//
-//        for (int i = 0; i < num; i++) {
-//            ans = "";
-//            while (ans == "")
-//                getline(cin, ans);
-//            pol->addAnswers(ans);
-//        }
-//
-//        putInPosts(pol);
-//    }
-//    else {
-//        Photo *pv = new Photo;
-//        cout << "Enter Link : ";
-//        s = "";
-//        while (s == "")
-//            getline(cin, s);
-//        pv->addPhoto(s);
-//
-//        putInPosts(pv);
-//    }
-//}
-//void User::putInPosts(Post *P) {
-//    posts[postsCount++] = P;
-//
-//}
+
+//posts
+
+void User::addPost(Post *newPost){
+
+	Post** TmpPosts = new Post* [numberOfPosts+1];
+
+	for (int i = 0; i < numberOfPosts; i++)
+		TmpPosts[i] = posts [i];
+
+	delete [] posts;
+
+	posts = TmpPosts;
+
+
+	posts [numberOfPosts] = newPost;
+
+	++numberOfPosts;
+
+}
+
+
+//setters and getters
+
+int User::getNumberOfPosts(){
+	return numberOfPosts;
+}
 
 void User::sendMessage(User *aUser, Message newMessage) {
     sentMessages.push_back(newMessage);
@@ -161,21 +135,26 @@ void User::sendMessage(User *aUser, Message newMessage) {
 int User::getFriendsCount() {
     return friendsCount;
 }
+
 int User::getReceivedMessagesCount() {
     return receivedMessages.size();
 }
+
 int User::getSentMessagesCount() {
     return sentMessages.size();
 }
+
 void User::setBirthDate(DateTime date) {
     birthDate = date;
 }
+
 void User::setPassword(string password) {
     if (!strongPassword(password)) {
         throw "Password is too weak";
     }
     this->password = password;
 }
+
 void User::setGender(int g) {
     if (g != 1 && g != 2) {
         throw "Wrong choice";
@@ -185,6 +164,7 @@ void User::setGender(int g) {
     else
         gender = "Female";
 }
+
 void User::setEmail(string email, System &currentSystem) {
     if (currentSystem.findUser(email) != -1)
         throw "Email already Exists";
@@ -193,29 +173,48 @@ void User::setEmail(string email, System &currentSystem) {
         throw "Invalid Email";
     this->email = email;
 }
+
 void User::setName(string name) {
     if (!validName(name)) {
         throw "Invalid name";
     }
     this->name = name;
 }
+
 DateTime User::getBirthDate() {
     return birthDate;
 }
+
 string User::getPassword() {
     return password;
 }
+
 string User::getGender() {
     return gender;
 }
+
 string User::getEmail() {
     return email;
 }
+
 string User::getName() {
     return name;
 }
-User *User::getFriend(int index) {
+
+int User::getID (){
+	return ID;
+}
+
+void User::setID (int ID){
+	this->ID = ID;
+}
+
+User* User::getFriend(int index) {
     return friends[index];
+}
+
+Post* User::getPost(int index){
+	return posts [index];
 }
 Message &User::getReceivedMessage(int index) {
     if (!(0 <= index and index < receivedMessages.size()))
@@ -223,23 +222,28 @@ Message &User::getReceivedMessage(int index) {
 
     return receivedMessages[index];
 }
+
 Message &User::getSentMessage(int index) {
     if (!(0 <= index and index < sentMessages.size()))
         throw "index out of boundary";
 
     return sentMessages[index];
 }
+
 Notifications *User::getNotifications() {
     return notifications;
 }
 
+//validation functions
+
 bool User::validName(string name) {
-    for (char X : name)
-        if (!('a' <= X && X <= 'z' || 'A' <= X && X <= 'Z' || X == ' '))
+    for (int i = 0, n = name.size(); i < n; i++)
+        if (!isalpha(name[i]) && name[i] != ' ')
             return false;
 
     return name.size() != 0;
 }
+
 bool User::strongPassword(string P) {
     bool hasUpper = false, hasLower = 0, hasDigit = 0;
     for (int i = 0; i < P.size(); i++) {
@@ -252,6 +256,7 @@ bool User::strongPassword(string P) {
     }
     return P.size() >= 8 && hasLower && hasUpper && hasDigit;
 }
+
 bool User::validEmail(string email) {
     int at = email.rfind('@');
     int com = email.rfind(".com");
@@ -261,11 +266,13 @@ bool User::validEmail(string email) {
 
 
 User::~User() {
-    for (int i = 0; i < friendsCount; i++)
-        friends[i]->removeFriend(this);
+
+	for (int i = 0; i < friendsCount; i++)
+	        friends[i]->removeFriend(this);
+
     delete[]friends;
 
-//    for (int i = 0; i < postsCount; i++)
-//        delete posts[i];
-//    delete[]posts;
+   for (int i = 0; i < numberOfPosts; i++)
+        delete posts[i];
+    delete[]posts;
 }

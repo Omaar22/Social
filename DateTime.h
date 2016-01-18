@@ -10,7 +10,6 @@ private:
 	int day, month, year;
 	int second, minute, hour;
 	string dayName, monthName;
-
 	bool validDate(int day, int month, int year);
 	bool validDate(string &DDMMYY);
 
