@@ -1,5 +1,6 @@
 #include "System.h"
 
+
 System mySystem;
 
 bool signUp() {
@@ -184,12 +185,13 @@ void viewPosts (){
 
 			for (int j = 0; j < post->getNumberofComment(); j++){
 
-				post->viewComment(j);
+				cout << post->viewComment(j) << '\n';
 
 				cout << "1.Continue\n2.Break\n";
 				cin >> choice;
-				if (choice == 1)
+				if (choice == 1 && i+1 < post ->getNumberofComment())
 					continue;
+				else if (choice == 1) cout << "No more comments\n";
 				else break;
 
 			}
@@ -210,15 +212,40 @@ void viewPosts (){
 				else if (choice == 2)
 					mySystem.getLoggedInUser()->getPost(i)->dislike(mySystem.getLoggedInUser()->getEmail());
 				else if (choice == 3){
-					string comment;
+					string text, name = mySystem.getLoggedInUser()->getName() + '\n';
 					cin.ignore();
-					getline (cin, comment);
-					mySystem.getLoggedInUser()->getPost(i)->addcomment(comment);
+					getline (cin, text);
+
+					mySystem.getLoggedInUser()->getPost(i)->addcomment(name + text);
 				}
 
+
+
 			}
-			if (choice == 4)
+			if (choice == 4){
+
+				//view everything number of likes, dislikes & comments
+				cout << post->getNumberofLikers() << " Like  "<<
+				post->getNumberofDislikers() << " Dislike  " <<
+				post->getNumberofComment() << " Comment  \n";
+
+				//view comments
+				for (int j = 0; j < post->getNumberofComment(); j++){
+
+					cout << post->viewComment(j) << '\n';
+					cout << "1.Continue\n2.Break\n";
+					cin >> choice;
+					if (choice == 1 && i+1 < post ->getNumberofComment())
+						continue;
+					else if (choice == 1) cout << "No more comments\n";
+					else break;
+
+				}
+
 				break;
+
+			}
+
 
 		}
 
@@ -328,7 +355,7 @@ void userProfile(User *aUser) {
 }
 
 void editYourProfile() {
-    cout << "Enter \"-1\" to exit at anytime.\n";
+    cout << "Enter \"-1\" to exit at any time.\n";
     cout << "1.Name\n2.Password\n3.Email\n4.Gender\n5.Date Of Birth\n" << endl;
     int choice;
     cin >> choice;
