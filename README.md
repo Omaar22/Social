@@ -19,4 +19,4 @@ it supports:
 
 -Notification for messages,friend requests and friends who accepted the friend request
 
-
+-
