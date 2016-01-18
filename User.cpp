@@ -112,6 +112,7 @@ void User::addPost(Post *newPost){
 
 	posts = TmpPosts;
 
+
 	posts [numberOfPosts] = newPost;
 
 	++numberOfPosts;
@@ -213,7 +214,7 @@ User* User::getFriend(int index) {
 }
 
 Post* User::getPost(int index){
-	return posts[index];
+	return posts [index];
 }
 Message &User::getReceivedMessage(int index) {
     if (!(0 <= index and index < receivedMessages.size()))
@@ -271,7 +272,7 @@ User::~User() {
 
     delete[]friends;
 
-//    for (int i = 0; i < postsCount; i++)
-//        delete posts[i];
-//    delete[]posts;
+   for (int i = 0; i < numberOfPosts; i++)
+        delete posts[i];
+    delete[]posts;
 }

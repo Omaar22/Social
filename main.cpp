@@ -167,10 +167,8 @@ void viewPosts (){
 	else {
 		for (int i = 0; i < numberOfPosts; ){
 
+		mySystem.getLoggedInUser()->getPost(i)->view();
 
-		cout << "Check point 1" << endl;
-
-			mySystem.getLoggedInUser()->getPost(i)->view();
 		cout << "Check point 2" << endl;
 		cout << '\n';
 
@@ -554,8 +552,9 @@ void yourProfile() {
         	getline (cin, status);
 
         	newStatus.addStatus(status);
-
+        	Post *p = &newStatus;
         	mySystem.getLoggedInUser()->addPost(&newStatus);
+
 
         }
 
@@ -731,3 +730,5 @@ int main() {
     }
 
 }
+
+
