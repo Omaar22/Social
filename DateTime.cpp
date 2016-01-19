@@ -46,7 +46,6 @@ string DateTime::timePassed() {
 bool  DateTime::validDate(string &DDMMYY) {
 
 	stringstream ss;
-		string convertedInt;
 		int convertedString;
 
 	if (DDMMYY[1] == '/')
@@ -215,7 +214,6 @@ void DateTime::setDate(int day, int month, int year) {
 void DateTime::setDate(string DDMMYY) {
 
 	stringstream ss;
-		string convertedInt;
 		int convertedString;
 
 

@@ -30,8 +30,7 @@ private:
     bool validName(string name);
 
 
-    void PushFriend(User *aUser); // send friend request => accept => add friend
-    int findFriend (int);
+    void pushFriend(User *aUser); // send friend request => accept => add friend
 public:
 
     User();
@@ -42,7 +41,7 @@ public:
 
     void sendFriendRequest(User *aUser);
     void acceptFriend(User *aUser); // accept friend request from aUser
-    void removeFriend(User *aUser); // reject friend request from aUser
+    void removeFriend(User *aUser); // remove friend from friends list
 
     void addPost (Post*);
     void removePost (int);

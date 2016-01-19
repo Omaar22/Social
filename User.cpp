@@ -48,11 +48,11 @@ void User::acceptFriend(User *aUser) {
 
     aUser->notifications->receiveAcceptedFriend(this);
 
-    PushFriend(aUser);
-    aUser->PushFriend(this);
+	pushFriend(aUser);
+	aUser->pushFriend(this);
 }
 
-void User::PushFriend(User *aUser) {
+void User::pushFriend(User *aUser) {
 
     User **tmpFriends = new User *[friendsCount + 1];
 

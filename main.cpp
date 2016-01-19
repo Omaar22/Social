@@ -212,7 +212,7 @@ void viewPosts (){
 				else if (choice == 2)
 					mySystem.getLoggedInUser()->getPost(i)->dislike(mySystem.getLoggedInUser()->getEmail());
 				else if (choice == 3){
-					string text, name = mySystem.getLoggedInUser()->getName() + '\n';
+					string text, name = mySystem.getLoggedInUser()->getName() + "\n";
 					cin.ignore();
 					getline (cin, text);
 
@@ -626,7 +626,7 @@ void yourProfile() {
         	while (i < (int)suggested.size() && i < 5){
 
         		int index = rand () % suggested.size();
-        		if (!vis [index++]){
+        		if (!vis [index]++){
         			toBeviewed.push_back (suggested[i]);
         			++i;
         		}
